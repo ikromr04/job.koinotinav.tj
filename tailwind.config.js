@@ -11,11 +11,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['"Source Sans 3"', 'sans-serif'],
-        'sourceSans': ['"Source Sans 3"', 'sans-serif'],
+        dinPro: ['DIN Pro', 'sans-serif'],
       },
       colors: {
-        'primary': '#0d457e',
+        'primary': '#3c324c',
+        'primary-light': '#8775a4',
+        'secondary': '#ed2e38',
       },
       textColor: {
         'success': '#16a34a',
@@ -23,20 +24,8 @@ export default {
         'warn': '#ea580c',
         'base': '#4b5563',
       },
-      backgroundColor: {
-        'success': '#66bb6a',
-      },
       backgroundImage: {
-        'illustrations': 'url(/images/illustrations.png)',
-      },
-      animation: {
-        rotation: 'rotation 1s linear infinite',
-      },
-      keyframes: {
-        rotation: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
+        'anime': 'url(/images/anim-bg.png)',
       },
     },
   },

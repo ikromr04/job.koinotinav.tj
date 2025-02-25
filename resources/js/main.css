@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'DIN Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../../fonts/DINPro-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DIN Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../fonts/DINPro.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DIN Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../fonts/DINPro-Bold.woff') format('woff');
+}
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
@@ -16,7 +40,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .container {
-  @apply w-[90vw] max-w-[1728px] mx-auto;
+  @apply w-[90vw] max-w-[1152px] mx-auto;
 }
 
 .title {
@@ -25,10 +49,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .no-scrollbar::-webkit-scrollbar {
   @apply hidden h-0 w-0 max-h-0 max-w-0;
-}
-
-.break-word {
-  word-break: break-word;
 }
 
 .scrollbar-y {
@@ -53,30 +73,39 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-.box {
-  @apply rounded-md shadow bg-white;
-}
-
-.box__header {
-  @apply flex items-center justify-between gap-2 rounded-t-md bg-gray-50 py-2 px-4;
-}
-
-.box__body {
-  @apply px-4 pt-2 pb-5 overflow-x-auto rounded-b-md no-scrollbar border-t bg-white;
-}
-
-.shake {
-  animation: shake 150ms 2 linear;
-}
-
-@keyframes shake {
+@keyframes slide {
   0% {
-    transform: translate(4px, 0);
+    transform: translateX(-25%);
   }
-  50% {
-    transform: translate(-4px, 0);
-  }
+
   100% {
-    transform: translate(0, 0);
+    transform: translateX(25%);
   }
+}
+
+.anim {
+  animation: slide 12s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #8775a4 50%, #3c324c 0);
+  height: 100%;
+  left: -50%;
+  opacity: .3;
+  position: absolute;
+  right: -50%;
+  top: 0;
+}
+
+.anim.second,
+.anim.second {
+  animation-direction: alternate-reverse;
+  animation-duration: 16s;
+}
+
+.anim-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

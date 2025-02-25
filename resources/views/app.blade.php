@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="font-sourceSans" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="font-dinPro" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="UTF-8">
@@ -11,16 +11,13 @@
   <link href="{{ asset('favicons/icon.svg') }}" rel="icon" type="image/svg+xml">
   <link href="{{ asset('favicons/180x180.png') }}" rel="apple-touch-icon">
   <link href="{{ asset('manifest.webmanifest') }}" rel="manifest">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
   <title>{{ env('APP_NAME') }}</title>
 </head>
 
 <body>
-  <div class="min-w-screen min-h-screen bg-gray-100 text-base" id="root"></div>
-
+  <div class="flex flex-col min-h-screen" id="root"></div>
+  
   @viteReactRefresh
   @vite('resources/js/main.tsx')
 </body>
