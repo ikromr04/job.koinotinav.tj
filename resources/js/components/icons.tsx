@@ -7,11 +7,21 @@ export const Icons = {
       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M17.238 3.003 8.904 8.836.571 3.003" />
     </svg>
   ),
+  banners: (props: SVGProps<SVGSVGElement>): JSX.Element => (
+    <svg fill="none" viewBox="0 0 20 21" {...props}>
+      <path fill="currentColor" d="M5.531 14.857h12.583a.324.324 0 0 0 .233-.107.324.324 0 0 0 .107-.233V3.849H5.19v10.668c0 .085.036.163.107.233.07.071.148.107.233.107Zm0 1.546c-.524 0-.969-.183-1.336-.55a1.818 1.818 0 0 1-.55-1.336V1.934c0-.524.183-.969.55-1.336.367-.367.812-.55 1.336-.55h12.583c.523 0 .969.183 1.336.55.367.367.55.812.55 1.336v12.583c0 .524-.183.969-.55 1.336a1.82 1.82 0 0 1-1.336.55H5.53Zm-3.645 3.645a1.82 1.82 0 0 1-1.336-.55A1.819 1.819 0 0 1 0 18.162V4.033h1.546v14.129c0 .085.036.163.107.233.07.071.148.107.233.107h14.129v1.546H1.886Z" />
+    </svg>
+  ),
   career: (props: SVGProps<SVGSVGElement>): JSX.Element => (
     <svg viewBox="0 0 18 18" fill="none" {...props}>
       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M9 14.833 14.833 9l2.5 2.5-5.833 5.833-2.5-2.5Z" />
       <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m14 9.833-1.25-6.25L.667.667 3.583 12.75 9.833 14 14 9.833Z" />
       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m.667.667 6.321 6.321M8.167 9.833a1.667 1.667 0 1 0 0-3.333 1.667 1.667 0 0 0 0 3.333Z" />
+    </svg>
+  ),
+  apartment: (props: SVGProps<SVGSVGElement>): JSX.Element => (
+    <svg fill="none" viewBox="0 0 20 21" {...props}>
+      <path fill="currentColor" d="M0 20.069V4.87h4.802V.07h10.395v9.605H20v10.395h-7.994v-4.803H7.994v4.803H0Zm.79-.79h4.012v-4.013H.79v4.013Zm0-4.803h4.012v-4.012H.79v4.012Zm0-4.802h4.012V5.66H.79v4.013Zm4.803 4.802h4.012v-4.012H5.593v4.012Zm0-4.802h4.012V5.66H5.593v4.013Zm0-4.803h4.012V.86H5.593V4.87Zm4.802 9.605h4.012v-4.012h-4.012v4.012Zm0-4.802h4.012V5.66h-4.012v4.013Zm0-4.803h4.012V.86h-4.012V4.87Zm4.803 14.408h4.012v-4.013h-4.013v4.013Zm0-4.803h4.012v-4.012h-4.013v4.012Z" />
     </svg>
   ),
   user: (props: SVGProps<SVGSVGElement>): JSX.Element => (
@@ -205,6 +215,11 @@ export const Icons = {
   update: (props: SVGProps<SVGSVGElement>): JSX.Element => (
     <svg fill="none" viewBox="0 0 20 20" {...props}>
       <path fill="currentColor" fillRule="evenodd" d="M11.875 6.25c.345 0 .625-.28.625-.625v-2.5a.625.625 0 1 0-1.25 0v2.5c0 .346.28.625.625.625ZM18.75 17.5c0 .69-.56 1.25-1.25 1.25h-15c-.69 0-1.25-.56-1.25-1.25v-15c0-.69.56-1.25 1.25-1.25h1.25V7.5c0 .69.56 1.25 1.25 1.25h10c.69 0 1.25-.56 1.25-1.25V1.25h1.25c.69 0 1.25.56 1.25 1.25v15ZM5 1.25h10v5.625c0 .346-.28.625-.625.625h-8.75A.625.625 0 0 1 5 6.875V1.25ZM17.5 0h-15A2.5 2.5 0 0 0 0 2.5v15A2.5 2.5 0 0 0 2.5 20h15a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 0Z" clipRule="evenodd" />
+    </svg>
+  ),
+  logout: (props: SVGProps<SVGSVGElement>): JSX.Element => (
+    <svg fill="none" viewBox="0 0 20 20" {...props}>
+      <path fill="currentColor" d="M2.054 20C1.484 20 1 19.801.6 19.404c-.4-.398-.6-.88-.6-1.448V2.044C0 1.477.2.994.6.596 1 .2 1.485 0 2.054 0h7.982v1.676h-7.98a.356.356 0 0 0-.254.115.352.352 0 0 0-.116.253v15.912c0 .092.039.176.116.253a.356.356 0 0 0 .255.115h7.979V20H2.054Zm13.02-5.107-1.188-1.187 2.886-2.868H6.574V9.162h10.198l-2.885-2.868 1.187-1.193L20 9.997l-4.926 4.896Z" />
     </svg>
   ),
 };

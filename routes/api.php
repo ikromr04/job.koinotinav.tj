@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 
 Route::prefix('auth')->group(function () {
   Route::get('/check', [AuthController::class, 'check']);
@@ -11,3 +12,12 @@ Route::prefix('auth')->group(function () {
 
   Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+  Route::prefix('banners')->group(function () {
+    Route::get('/', [BannerController::class, 'index']);
+    Route::post('/', [BannerController::class, 'store']);
+    Route::put('/{id}', [BannerController::class, 'update']);
+  });
+});
+

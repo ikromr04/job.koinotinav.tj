@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-  public function check(Request $request): JsonResponse
+  public function check(Request $request)
   {
     $user = $request->user();
 

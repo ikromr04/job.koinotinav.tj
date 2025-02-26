@@ -1,36 +1,35 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError, AxiosInstance } from 'axios';
-import { GradeDeleteDTO, GradeStoreDTO, GradeUpdateDTO } from '@/dto/grades';
 import { ValidationError } from '@/types/validation-error';
 import { generatePath } from 'react-router-dom';
-import { Grades } from '@/types/grades';
+import { Banner, BannerId, Banners } from '@/types/banners';
 import { APIRoute } from '@/const/routes';
 
-export const fetchGradesAction = createAsyncThunk<Grades, undefined, {
+export const fetchBannersAction = createAsyncThunk<Banners, undefined, {
   extra: AxiosInstance
 }>(
-  'grades/fetch',
+  'banners/fetch',
   async (_arg, { extra: api }) => {
-    const { data } = await api.get<Grades>(APIRoute.Grades.Index);
+    const { data } = await api.get<Banners>(APIRoute.Banners.Index);
 
     return data;
   },
 );
 
-export const storeGradeAction = createAsyncThunk<Grades, {
-  dto: GradeStoreDTO,
-  onSuccess?: () => void,
+export const storeBannerAction = createAsyncThunk<Banner, {
+  formData: FormData,
+  onSuccess?: (banner: Banner) => void,
   onValidationError?: (error: ValidationError) => void,
   onFail?: (message: string) => void,
 }, {
   extra: AxiosInstance,
   rejectWithValue: ValidationError,
 }>(
-  'grades/store',
-  async ({ dto, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+  'banners/store',
+  async ({ formData, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
     try {
-      const { data } = await api.post<Grades>(APIRoute.Grades.Index, dto);
-      if (onSuccess) onSuccess();
+      const { data } = await api.post<Banner>(APIRoute.Banners.Index, formData);
+      if (onSuccess) onSuccess(data);
       return data;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
@@ -43,20 +42,23 @@ export const storeGradeAction = createAsyncThunk<Grades, {
   },
 );
 
-export const updateGradeAction = createAsyncThunk<Grades, {
-  dto: GradeUpdateDTO,
-  onSuccess?: () => void,
-  onValidationError?: (error: ValidationError) => void,
-  onFail?: (message: string) => void,
+export const updateBannerAction = createAsyncThunk<Banner, {
+  id: BannerId;
+  formData: FormData;
+  onSuccess?: (banner: Banner) => void;
+  onValidationError?: (error: ValidationError) => void;
+  onFail?: (message: string) => void;
 }, {
-  extra: AxiosInstance,
-  rejectWithValue: ValidationError,
+  extra: AxiosInstance;
+  rejectWithValue: ValidationError;
 }>(
-  'grades/update',
-  async ({ dto, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+  'banners/update',
+  async ({ id, formData, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+    formData.append('_method', 'put');
+
     try {
-      const { data } = await api.put<Grades>(APIRoute.Grades.Index, dto);
-      if (onSuccess) onSuccess();
+      const { data } = await api.post<Banner>(generatePath(APIRoute.Banners.Show, { id }), formData);
+      if (onSuccess) onSuccess(data);
       return data;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
@@ -69,20 +71,19 @@ export const updateGradeAction = createAsyncThunk<Grades, {
   },
 );
 
-export const deleteGradeAction = createAsyncThunk<Grades, {
-  dto: GradeDeleteDTO,
-  onSuccess?: () => void,
+export const deleteBannerAction = createAsyncThunk<void, {
+  id: BannerId,
+  onSuccess?: (message: string) => void,
   onFail?: (message: string) => void,
 }, {
   extra: AxiosInstance,
   rejectWithValue: ValidationError,
 }>(
-  'grades/delete',
-  async ({ dto, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+  'banners/delete',
+  async ({ id, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
     try {
-      const { data } = await api.delete<Grades>(`${generatePath(APIRoute.Grades.Show, { gradeId: dto.grade_id })}?students_deletion=${dto.students_deletion ? 'true' : ''}`);
-      if (onSuccess) onSuccess();
-      return data;
+      const { data } = await api.delete<{ message: string }>(generatePath(APIRoute.Banners.Show, { id }));
+      if (onSuccess) onSuccess(data.message);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       const error: AxiosError<ValidationError> = err;

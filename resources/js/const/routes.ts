@@ -28,4 +28,8 @@ export const APIRoute = {
     Login: '/auth/login',
     Logout: '/auth/logout',
   },
+  Banners: {
+    Index: '/banners',
+    Show: '/banners/:id',
+  }
 };

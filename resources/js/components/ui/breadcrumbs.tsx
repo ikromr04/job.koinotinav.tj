@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { Icons } from '../icons';
 
 type BreadcrumbsProps = {
-  className?: string;
   items: [string, string][];
+  className?: string;
 };
 
 function Breadcrumbs({
-  className,
   items,
+  className,
 }: BreadcrumbsProps): JSX.Element {
   return (
     <div className="relative">
@@ -21,7 +21,7 @@ function Breadcrumbs({
         )}
       >
         {items.map(([label, url]) => (
-          <li key={label} className="flex gap-1 items-center min-w-max">
+          <li key={label} className="flex gap-1 items-baseline min-w-max text-gray-600">
             {url ? <>
               <Link className="text-gray-900" to={url}>
                 {label}

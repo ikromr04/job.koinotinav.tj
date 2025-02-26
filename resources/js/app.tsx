@@ -11,8 +11,22 @@ import VacanciesCreatePage from './pages/dashboard/vacancies/vacancies-create-pa
 import VacanciesEditPage from './pages/dashboard/vacancies/vacancies-edit-page';
 import CompaniesPage from './pages/dashboard/companies-page';
 import LoginPage from './pages/login-page';
+import { useAppSelector } from './hooks';
+import { getAuthStatus } from './store/auth-slice/auth-selector';
+import { AuthorizationStatus } from './const/store';
+import Spinner from './components/ui/spinner';
 
 function App(): JSX.Element {
+  const authStatus = useAppSelector(getAuthStatus);
+
+  if (authStatus === AuthorizationStatus.Unknown) {
+    return (
+      <div className="flex w-screen h-screen justify-center items-center">
+        <Spinner className="w-16 h-16" />
+      </div>
+    );
+  }
+
   return (
     <BrowserRouter
       future={{

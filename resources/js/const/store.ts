@@ -5,9 +5,6 @@ export enum AuthorizationStatus {
 };
 
 export enum SliceName {
-  App = 'App',
   Auth = 'Auth',
-  Users = 'Users',
-  Grades = 'Grades',
-  Nationalities = 'Nationalities',
+  Banners = 'Banners',
 };
