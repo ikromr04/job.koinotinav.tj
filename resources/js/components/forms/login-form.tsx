@@ -3,16 +3,14 @@ import * as Yup from 'yup';
 import { Form, Formik, FormikHelpers } from 'formik';
 import classNames from 'classnames';
 import Button from '../ui/button';
-import { Link } from 'react-router-dom';
 import TextField from '../ui/fields/text-field';
 import PasswordField from '../ui/fields/password-field';
 import { LoginCredentials } from '@/dto/auth-dto';
 import { useAppDispatch } from '@/hooks';
 import { loginAction } from '@/store/auth-slice/auth-api-actions';
-import { AppRoute } from '@/const/routes';
 
 const validationSchema = Yup.object().shape({
-  login: Yup.string().required('Введите Ваш логин.'),
+  email: Yup.string().required('Введите Ваш логин.'),
   password: Yup.string().required('Введите Ваш пароль.'),
 });
 
@@ -24,7 +22,10 @@ function LoginForm({
   className,
 }: LoginFormProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const initialValues: LoginCredentials = { login: '', password: '' };
+  const initialValues: LoginCredentials = {
+    email: '',
+    password: '',
+  };
 
   const onSubmit = async (
     values: LoginCredentials,
@@ -47,21 +48,13 @@ function LoginForm({
       onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className={classNames(className, 'flex flex-col')}>
-          <TextField name="login" label="Логин" />
+        <Form className={classNames(className, 'flex flex-col gap-2')}>
+          <TextField name="email" label="Логин" />
 
-          <div className="flex flex-col mb-5">
-            <Link
-              className="flex ml-auto transform translate-y-full text-sm text-blue-600 transition-all duration-300 hover:text-blue-400"
-              to={AppRoute.Auth.ForgotPassword}
-            >
-              Забыли пароль?
-            </Link>
-            <PasswordField name="password" label="Пароль" />
-          </div>
+          <PasswordField name="password" label="Пароль" />
 
           <Button
-            className={classNames('justify-center', isSubmitting && 'opacity-60')}
+            className={classNames('justify-center mt-3', isSubmitting && 'opacity-60')}
             type="submit"
             disabled={isSubmitting}
             loading={isSubmitting}

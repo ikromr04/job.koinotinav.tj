@@ -1,4 +1,4 @@
-const AUTH_TOKEN_KEY_NAME = 'imperiya-vip-token';
+const AUTH_TOKEN_KEY_NAME = 'job-koinotinav-token';
 
 export type Token = string;
 

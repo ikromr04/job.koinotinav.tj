@@ -3,6 +3,22 @@ export const AppRoute = {
   Auth: {
     Login: '/auth/login',
   },
+  Dashboard: {
+    Index: '/dashboard',
+    Banners: {
+      Index: '/dashboard/banners',
+      Create: '/dashboard/banners/create',
+      Edit: '/dashboard/banners/:id',
+    },
+    Vacancies: {
+      Index: '/dashboard/vacancies',
+      Create: '/dashboard/vacancies/create',
+      Edit: '/dashboard/vacancies/:id',
+    },
+    Companies: {
+      Index: '/dashboard/companies',
+    }
+  },
   NotFound: '*',
 };
 

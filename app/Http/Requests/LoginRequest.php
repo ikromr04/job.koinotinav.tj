@@ -16,9 +16,9 @@ class LoginRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'login' => 'required|exists:users,login',
+      'email' => 'required|exists:users,email',
       'password' => ['required', function ($attribute, $value, $fail) {
-        $user = User::where('login', $this->login)->first();
+        $user = User::where('email', $this->email)->first();
 
         if ($user && !Hash::check($value, $user->password)) {
           $fail('Неверный пароль.');
@@ -30,8 +30,8 @@ class LoginRequest extends FormRequest
   public function messages(): array
   {
     return [
-      'login.required' => 'Требуется логин.',
-      'login.exists' => 'Нам не удалось найти пользователя с таким логином.',
+      'email.required' => 'Требуется логин.',
+      'email.exists' => 'Нам не удалось найти пользователя с таким логином.',
       'password.required' => 'Пароль обязательно для заполнения.',
     ];
   }
