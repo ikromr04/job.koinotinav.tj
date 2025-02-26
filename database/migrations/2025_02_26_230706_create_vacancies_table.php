@@ -11,10 +11,15 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('banners', function (Blueprint $table) {
+    Schema::create('vacancies', function (Blueprint $table) {
       $table->id();
-      $table->string('background')->default('/images/image-field.png');
+      $table->text('title');
       $table->text('content');
+      $table->boolean('hot')->default(false);
+      $table->string('city');
+      $table->string('image')->default('/images/image-field.png');
+      $table->string('direction');
+      $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
       $table->timestamps();
     });
   }
@@ -24,6 +29,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('banners');
+    Schema::dropIfExists('vacancies');
   }
 };

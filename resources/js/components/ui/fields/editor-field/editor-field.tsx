@@ -50,6 +50,15 @@ export default function EditorField({
             };
           },
         },
+        color: {
+          default: null,
+          parseHTML: (element: HTMLElement) => element.style.color || null,
+          renderHTML: (attributes) => {
+            return {
+              style: `color: ${attributes.color}`,
+            };
+          },
+        },
       };
     },
   });

@@ -34,7 +34,7 @@ class BannerController extends Controller
     $banner = Banner::findOrFail($request->id);
 
     if ($request->hasFile('background')) {
-      if (file_exists(public_path($banner->background))) {
+      if ($banner->background !== '/images/image-field.png' && file_exists(public_path($banner->background))) {
         unlink(public_path($banner->background));
       }
 
@@ -56,7 +56,7 @@ class BannerController extends Controller
   {
     $banner = Banner::findOrFail($id);
 
-    if (file_exists(public_path($banner->background))) {
+    if ($banner->background !== '/images/image-field.png' && file_exists(public_path($banner->background))) {
       unlink(public_path($banner->background));
     }
 

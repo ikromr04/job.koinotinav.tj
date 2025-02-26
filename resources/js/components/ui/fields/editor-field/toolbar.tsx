@@ -4,12 +4,17 @@ import { Icons } from './icons';
 import classNames from 'classnames';
 import Tooltip from '../../tooltip';
 import { useDropdown } from '@/hooks/use-dropdown';
+import ColorPalette from './color-palette';
 
-export default function Toolbar({
-  editor,
-}: {
+type ToolbarProps = {
   editor: Editor;
-}): JSX.Element {
+}
+
+function Toolbar({
+  editor,
+}: ToolbarProps): JSX.Element {
+  const { ref, menuRef, isOpen, setIsOpen } = useDropdown<HTMLLIElement>();
+
   const handleImageFieldChange = (evt: BaseSyntheticEvent) => {
     const file = evt.target.files[0];
     if (!file) return;
@@ -29,8 +34,6 @@ export default function Toolbar({
     editor.chain().focus().setMark('textStyle', { fontSize: size }).run();
     setIsOpen(false);
   };
-
-  const { ref, menuRef, isOpen, setIsOpen } = useDropdown<HTMLLIElement>();
 
   return (
     <div className="flex items-center border border-gray-200 border-b-0 rounded-t p-[1px] gap-1">
@@ -137,7 +140,7 @@ export default function Toolbar({
             onClick={() => setIsOpen(!isOpen)}
             className={classNames(
               'flex items-center border border-transparent justify-center w-7 h-7 hover:border-gray-200',
-              editor.isActive('bold') ? 'bg-gray-100 text-success' : ''
+              editor.isActive('textStyle') ? 'bg-gray-100 text-success' : ''
             )}
           >
             <Tooltip label="Размер шрифта" position="top" />
@@ -147,21 +150,24 @@ export default function Toolbar({
           <div
             ref={menuRef}
             className={classNames(
-              'absolute left-1/2 top-[calc(100%+4px)] z-10 bg-white border rounded flex flex-col transform -translate-x-1/2',
+              'absolute left-1/2 top-[calc(100%+4px)] z-10 bg-white border rounded flex flex-col transform -translate-x-1/2 max-h-56 overflow-y-scroll scrollbar-y',
               isOpen ? 'visible' : 'invisible'
             )}
           >
-            {[12, 14, 16, 18, 20, 24, 28, 32, 40, 48].map((fontSize) => (
+            {Array.from({ length: 71 }, (_, index) => (
               <button
-                key={fontSize}
+                key={index + 12}
                 className="flex items-center px-2 py-1 text-sm hover:bg-blue-50"
                 type="button"
-                onClick={() => setFontSize(`${fontSize}px`)}
+                onClick={() => setFontSize(`${index + 12}px`)}
               >
-                {fontSize}px
+                {index + 12}px
               </button>
             ))}
           </div>
+        </li>
+        <li>
+          <ColorPalette editor={editor} />
         </li>
         <li>
           <button
@@ -355,3 +361,5 @@ export default function Toolbar({
     </div>
   );
 }
+
+export default Toolbar;

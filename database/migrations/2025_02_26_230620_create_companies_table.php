@@ -11,10 +11,10 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('banners', function (Blueprint $table) {
+    Schema::create('companies', function (Blueprint $table) {
       $table->id();
-      $table->string('background')->default('/images/image-field.png');
-      $table->text('content');
+      $table->string('title');
+      $table->string('logo');
       $table->timestamps();
     });
   }
@@ -24,6 +24,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('banners');
+    Schema::dropIfExists('companies');
   }
 };

@@ -7,4 +7,6 @@ export enum AuthorizationStatus {
 export enum SliceName {
   Auth = 'Auth',
   Banners = 'Banners',
+  Vacancies = 'Vacancies',
+  Companies = 'Companies',
 };

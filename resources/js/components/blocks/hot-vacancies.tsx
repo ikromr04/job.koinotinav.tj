@@ -1,24 +1,19 @@
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { fetchBannersAction } from '@/store/banners-slice/banners-api-actions';
-import { getBanners } from '@/store/banners-slice/banners-selector';
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Icons } from '../icons';
+import { Vacancies } from '@/types/vacancies';
 
-function BannersBlock(): ReactNode {
-  const dispatch = useAppDispatch();
-  const banners = useAppSelector(getBanners);
+type HotVacanciesProps = {
+  vacancies: Vacancies;
+};
 
-  useEffect(() => {
-    if (!banners) dispatch(fetchBannersAction());
-  }, [banners, dispatch]);
-
-  if (!banners) return null;
-
+function HotVacancies({
+  vacancies,
+}: HotVacanciesProps): ReactNode {
   return (
     <Swiper
-      className="relative z-0 text-white"
+      className="relative z-0"
       spaceBetween={50}
       slidesPerView={1}
       loop
@@ -37,25 +32,13 @@ function BannersBlock(): ReactNode {
         nextEl: '.banners-next',
       }}
     >
-      {banners.map((banner) => (
+      {vacancies.map((vacancy) => (
         <SwiperSlide
-          key={JSON.stringify(banner)}
+          key={JSON.stringify(vacancy)}
           className="relative z-0 py-8 min-h-60 md:py-12 md:min-h-96 lg:py-16 lg:min-h-[540px]"
         >
           <div className="container flex h-full items-center md:px-8 lg:px-14">
-            <div className="max-w-[540px]">
-              <div key={banner.content} dangerouslySetInnerHTML={{ __html: banner.content }} />
-              <img
-                className="absolute left-0 top-0 -z-20 w-full h-full object-cover"
-                src={banner.background}
-                alt="Баннер"
-              />
-              <img
-                className="absolute left-0 top-0 -z-10 w-full h-full object-cover object-left"
-                src="/images/banners/bg.svg"
-                alt="Наложение"
-              />
-            </div>
+            <div key={vacancy.title} dangerouslySetInnerHTML={{ __html: vacancy.title }} />
           </div>
         </SwiperSlide>
       ))}
@@ -74,4 +57,4 @@ function BannersBlock(): ReactNode {
   );
 }
 
-export default BannersBlock;
+export default HotVacancies;

@@ -31,5 +31,13 @@ export const APIRoute = {
   Banners: {
     Index: '/banners',
     Show: '/banners/:id',
-  }
+  },
+  Vacancies: {
+    Index: '/vacancies',
+    Show: '/vacancies/:id',
+  },
+  Companies: {
+    Index: '/companies',
+    Show: '/companies/:id',
+  },
 };
