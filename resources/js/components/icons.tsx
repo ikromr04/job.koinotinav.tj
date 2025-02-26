@@ -222,4 +222,9 @@ export const Icons = {
       <path fill="currentColor" d="M2.054 20C1.484 20 1 19.801.6 19.404c-.4-.398-.6-.88-.6-1.448V2.044C0 1.477.2.994.6.596 1 .2 1.485 0 2.054 0h7.982v1.676h-7.98a.356.356 0 0 0-.254.115.352.352 0 0 0-.116.253v15.912c0 .092.039.176.116.253a.356.356 0 0 0 .255.115h7.979V20H2.054Zm13.02-5.107-1.188-1.187 2.886-2.868H6.574V9.162h10.198l-2.885-2.868 1.187-1.193L20 9.997l-4.926 4.896Z" />
     </svg>
   ),
+  nextSlide: (props: SVGProps<SVGSVGElement>): JSX.Element => (
+    <svg fill="none" viewBox="0 0 20 20" {...props}>
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M10 19.259A9.259 9.259 0 1 0 10 .742a9.259 9.259 0 0 0 0 18.517ZM10 13.703 13.703 10m0 0L10 6.297M13.703 10H6.297" />
+    </svg>
+  ),
 };

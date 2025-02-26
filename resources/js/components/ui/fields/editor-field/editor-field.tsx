@@ -57,7 +57,11 @@ export default function EditorField({
   const editor = useEditor({
     extensions: [
       Document,
-      Paragraph,
+      Paragraph.configure({
+        HTMLAttributes: {
+          class: 'paragraph',
+        }
+      }),
       Text,
       CustomTextStyle,
       Bold,
@@ -79,9 +83,6 @@ export default function EditorField({
       ListItem,
       Heading.configure({
         levels: [1, 2, 3, 4, 5, 6],
-        HTMLAttributes: {
-          class: 'title',
-        },
       }),
       TextAlign.configure({
         types: ['paragraph', 'heading'],

@@ -66,7 +66,7 @@ function AppHeader(): JSX.Element {
             </li>
           </ul>
 
-          <Link className="flex items-center gap-2 justify-center border-[2px] border-white rounded lg:px-8 lg:h-12 sr-only lg:not-sr-only" to={AppRoute.Main}>
+          <Link className="flex items-center gap-2 justify-center border-[2px] border-white font-semibold rounded lg:px-8 lg:h-12 sr-only lg:not-sr-only" to={AppRoute.Main}>
             <Icons.career width={18} height={18} /> Карьера
           </Link>
         </div>

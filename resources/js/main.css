@@ -130,3 +130,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .navlink__label {
   @apply min-w-max pointer-events-none transition-all duration-300 group-[.menu-collapsed]:invisible group-[.menu-collapsed]:opacity-0;
 }
+
+.swiper-wrapper {
+  @apply !grid !grid-flow-col;
+}
+
+.paragraph {
+  @apply min-h-5;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-secondary;
+}
