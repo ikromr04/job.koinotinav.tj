@@ -1,6 +1,8 @@
+import BannersDeleteForm from '@/components/forms/banners/banners-delete-form';
 import DashboardLayout from '@/components/layouts/dashboard-layout';
 import Button from '@/components/ui/button';
 import DataTable from '@/components/ui/data-table';
+import Modal from '@/components/ui/modal';
 import { AppRoute } from '@/const/routes';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { fetchBannersAction } from '@/store/banners-slice/banners-api-actions';
@@ -8,37 +10,23 @@ import { getBanners } from '@/store/banners-slice/banners-selector';
 import { Banner } from '@/types/banners';
 import { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 function BannersPage(): ReactNode {
   const dispatch = useAppDispatch();
   const banners = useAppSelector(getBanners);
   const navigate = useNavigate();
+  const [deleteModal, setDeleteModal] = useState({
+    isOpen: false,
+    id: 0,
+  });
 
   useEffect(() => {
     if (!banners) dispatch(fetchBannersAction());
   }, [banners, dispatch]);
 
   const columns: ColumnDef<Banner>[] = [
-    {
-      id: 'Флажки',
-      header: ({ table }) => (
-        <input
-          type="checkbox"
-          checked={table.getIsAllRowsSelected()}
-          onChange={table.getToggleAllRowsSelectedHandler()}
-        />
-      ),
-      cell: ({ row }) => (
-        <input
-          type="checkbox"
-          checked={row.getIsSelected()}
-          onChange={row.getToggleSelectedHandler()}
-        />
-      ),
-      size: 50
-    },
     {
       id: 'ID',
       accessorKey: 'id',
@@ -97,6 +85,7 @@ function BannersPage(): ReactNode {
           <Button
             icon="delete"
             variant="error"
+            onClick={() => setDeleteModal({ id: row.original.id, isOpen: true })}
           >
             <span className="sr-only">Удалить</span>
           </Button>
@@ -122,6 +111,10 @@ function BannersPage(): ReactNode {
           onCreateButtonClick={() => navigate(AppRoute.Dashboard.Banners.Create)}
         />
       </main>
+
+      <Modal isOpen={deleteModal.isOpen}>
+        <BannersDeleteForm modal={deleteModal} setModal={setDeleteModal} />
+      </Modal>
     </DashboardLayout>
   );
 }

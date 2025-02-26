@@ -4,6 +4,7 @@ import { ValidationError } from '@/types/validation-error';
 import { generatePath } from 'react-router-dom';
 import { Banner, BannerId, Banners } from '@/types/banners';
 import { APIRoute } from '@/const/routes';
+import { ResponseMessage } from '@/types';
 
 export const fetchBannersAction = createAsyncThunk<Banners, undefined, {
   extra: AxiosInstance
@@ -71,9 +72,9 @@ export const updateBannerAction = createAsyncThunk<Banner, {
   },
 );
 
-export const deleteBannerAction = createAsyncThunk<void, {
+export const deleteBannerAction = createAsyncThunk<BannerId, {
   id: BannerId,
-  onSuccess?: (message: string) => void,
+  onSuccess?: () => void,
   onFail?: (message: string) => void,
 }, {
   extra: AxiosInstance,
@@ -82,8 +83,9 @@ export const deleteBannerAction = createAsyncThunk<void, {
   'banners/delete',
   async ({ id, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
     try {
-      const { data } = await api.delete<{ message: string }>(generatePath(APIRoute.Banners.Show, { id }));
-      if (onSuccess) onSuccess(data.message);
+      await api.delete<ResponseMessage>(generatePath(APIRoute.Banners.Show, { id }));
+      if (onSuccess) onSuccess();
+      return id;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       const error: AxiosError<ValidationError> = err;

@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/', [BannerController::class, 'index']);
     Route::post('/', [BannerController::class, 'store']);
     Route::put('/{id}', [BannerController::class, 'update']);
+    Route::delete('/{id}', [BannerController::class, 'delete']);
   });
 });
 

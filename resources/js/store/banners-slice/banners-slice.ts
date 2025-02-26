@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Banners } from '@/types/banners';
 import {
+  deleteBannerAction,
   fetchBannersAction,
   storeBannerAction,
   updateBannerAction,
@@ -31,6 +32,13 @@ export const bannersSlice = createSlice({
         if (state.banners) {
           state.banners = state.banners.map((banner) =>
             banner.id === action.payload.id ? { ...action.payload } : banner
+          );
+        }
+      })
+      .addCase(deleteBannerAction.fulfilled, (state, action) => {
+        if (state.banners) {
+          state.banners = state.banners.filter(({ id }) =>
+            id !== action.payload
           );
         }
       });

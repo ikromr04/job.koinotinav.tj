@@ -51,4 +51,17 @@ class BannerController extends Controller
 
     return response()->json($banner, 200);
   }
+
+  public function delete(int $id)
+  {
+    $banner = Banner::findOrFail($id);
+
+    if (file_exists(public_path($banner->background))) {
+      unlink(public_path($banner->background));
+    }
+
+    $banner->delete();
+
+    return response()->noContent();
+  }
 }

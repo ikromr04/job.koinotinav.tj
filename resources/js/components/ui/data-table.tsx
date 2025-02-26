@@ -52,8 +52,6 @@ export default function DataTable<T>({
     onColumnVisibilityChange: setColumnVisibility,
   });
 
-  // const selectedRowIds = table.getSelectedRowModel().rows.map((row) => row.original.id);
-
   return (
     <div
       className={classNames(
@@ -91,12 +89,6 @@ export default function DataTable<T>({
               onClick={onCreateButtonClick}
             >
               Добавить
-            </Button>
-            <Button
-              icon="delete"
-              variant="error"
-            >
-              Удалить выбранные
             </Button>
           </div>
         </caption>
