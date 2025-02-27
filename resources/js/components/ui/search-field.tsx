@@ -16,17 +16,30 @@ function SearchField({
   const handleResetButtonClick = () => {
     setKeyword('');
     setSearchParams((prev) => {
+      if (prev.get('city')) prev.set('city', prev.get('city')?.toString() || '');
+      if (prev.get('direction')) prev.set('direction', prev.get('direction')?.toString() || '');
+      if (prev.get('company')) prev.set('company', prev.get('company')?.toString() || '');
+
       prev.delete('keyword');
+      prev.delete('page');
+
       return prev;
     });
   };
 
   const handleSubmitButtonClick = (evt: BaseSyntheticEvent) => {
     evt.preventDefault();
-    setSearchParams((prev) => ({
-      ...prev,
-      keyword,
-    }));
+    
+    setSearchParams((prev) => {
+      if (prev.get('city')) prev.set('city', prev.get('city')?.toString() || '');
+      if (prev.get('direction')) prev.set('direction', prev.get('direction')?.toString() || '');
+      if (prev.get('company')) prev.set('company', prev.get('company')?.toString() || '');
+
+      prev.set('keyword', keyword || '');
+      prev.delete('page');
+
+      return prev;
+    });
   };
 
   return (

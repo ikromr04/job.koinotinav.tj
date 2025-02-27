@@ -20,18 +20,31 @@ function FilterBlock({
   const directionOptions = [...new Set(vacancies.map(({ direction }) => direction))];
 
   const handleCityChange = (option: Option) => {
+    document.getElementById('#vacancies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     setSearchParams((prev) => {
+      if (prev.get('keyword')) prev.set('keyword', prev.get('keyword')?.toString() || '');
+      if (prev.get('direction')) prev.set('direction', prev.get('direction')?.toString() || '');
+      if (prev.get('company')) prev.set('company', prev.get('company')?.toString() || '');
+
       if (!option.value) {
         prev.delete('city');
       } else {
         prev.set('city', option.value);
       }
+
+      prev.delete('page');
+
       return prev;
     });
   };
 
   const handleDirectionChange = (option: Option) => {
+    document.getElementById('#vacancies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     setSearchParams((prev) => {
+      prev.delete('page');
+
       if (!option.value) {
         prev.delete('direction');
       } else {
@@ -39,10 +52,49 @@ function FilterBlock({
       }
       return prev;
     });
+
+    setSearchParams((prev) => {
+      if (prev.get('keyword')) prev.set('keyword', prev.get('keyword')?.toString() || '');
+      if (prev.get('city')) prev.set('city', prev.get('city')?.toString() || '');
+      if (prev.get('company')) prev.set('company', prev.get('company')?.toString() || '');
+
+      if (!option.value) {
+        prev.delete('direction');
+      } else {
+        prev.set('direction', option.value);
+      }
+
+      prev.delete('page');
+
+      return prev;
+    });
+  };
+
+  const handleCompanyChange = (companyId: string) => {
+    document.getElementById('#vacancies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    setSearchParams((prev) => {
+      if (prev.get('keyword')) prev.set('keyword', prev.get('keyword')?.toString() || '');
+      if (prev.get('city')) prev.set('city', prev.get('city')?.toString() || '');
+      if (prev.get('direction')) prev.set('direction', prev.get('direction')?.toString() || '');
+
+      if (!companyId) {
+        prev.delete('company');
+      } else {
+        prev.set('company', companyId);
+      }
+
+      prev.delete('page');
+
+      return prev;
+    });
   };
 
   const handleResetButtonClick = () => {
+    document.getElementById('#vacancies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     setSearchParams((prev) => {
+      prev.delete('page');
       prev.delete('city');
       prev.delete('direction');
       prev.delete('company');
@@ -97,7 +149,7 @@ function FilterBlock({
           className="mb-4"
           vacancies={vacancies}
           value={searchParams.get('company')?.toString() || ''}
-          onChange={(companyId) => setSearchParams((prev) => ({ ...prev, company: companyId }))}
+          onChange={handleCompanyChange}
         />
 
         <button

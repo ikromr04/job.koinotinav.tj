@@ -45,6 +45,7 @@ function Companies({
 
       {companies?.map((company) => (
         <button
+          key={JSON.stringify(company)}
           className={classNames(
             'flex items-center gap-2 p-1 pr-2 rounded-l-full h-12 transition-all duration-300 text-left leading-[1.2] hover:bg-gray-100',
             value === company.id.toString() && 'bg-primary-light/20 pointer-events-none',
