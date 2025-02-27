@@ -9,7 +9,7 @@ import { fetchVacanciesAction } from '@/store/vacancies-slice/vacancies-api-acti
 import HotVacancies from '@/components/blocks/hot-vacancies';
 import SearchField from '../components/ui/search-field';
 import VacanciesBlock from '@/components/blocks/vacancies-block';
-import FilterForm from '@/components/forms/filter-form/filter-form';
+import FilterBlock from '@/components/blocks/filter-block';
 
 function HomePage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -32,11 +32,11 @@ function HomePage(): JSX.Element {
           Актуальные вакансии
         </h1>
 
-        <SearchField className="mb-6 md:mb-10" />
+        <SearchField className="mb-6" />
 
         {vacancies &&
-          <div className="container mb-6 md:mb-10">
-            <FilterForm vacancies={vacancies} />
+          <div className="container mb-6 md:mb-10 lg:grid lg:grid-cols-[320px,1fr] lg:gap-x-6">
+            <FilterBlock vacancies={vacancies} />
             <VacanciesBlock />
           </div>
         }

@@ -1,6 +1,6 @@
 import { SliceName } from '@/const/store';
-import { Banners } from '@/types/banners';
+import { Companies } from '@/types/companies';
 import { State } from '@/types/state';
 
-export const getBanners = (state: State): Banners | null =>
-  state[SliceName.Banners].banners;
+export const getCompanies = (state: State): Companies | null =>
+  state[SliceName.Companies].companies;
