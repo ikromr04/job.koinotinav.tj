@@ -62,7 +62,7 @@ function HotVacancies({
                 <img
                   className="w-full aspect-[3/2] object-cover rounded mb-2 bg-gray-100"
                   src={vacancy.image}
-                  alt=""
+                  alt={vacancy.direction}
                 />
                 <div key={vacancy.title} dangerouslySetInnerHTML={{ __html: vacancy.title }} />
               </div>
