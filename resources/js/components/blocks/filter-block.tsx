@@ -8,10 +8,12 @@ import Companies from '../forms/filter-form/companies';
 
 type FilterBlockProps = {
   vacancies: Vacancies;
+  className?: string;
 };
 
 function FilterBlock({
   vacancies,
+  className,
 }: FilterBlockProps): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
   const cityOptions = [...new Set(vacancies.map(({ city }) => city))];
@@ -50,7 +52,7 @@ function FilterBlock({
   };
 
   return (
-    <section>
+    <section className={className}>
       <button
         className="flex items-center leading-none font-bold text-lg text-gray-600 gap-x-2 ml-auto lg:hidden lg:invisible"
         type="button"
@@ -107,7 +109,7 @@ function FilterBlock({
         </button>
       </div>
 
-      <div className="p-5">
+      <div className="hidden p-5 lg:block">
         <p className="leading-[1.2] mb-4">
           Если Вы не нашли подходящую вакансию, прикрепите своё резюме для Резерва:
         </p>
