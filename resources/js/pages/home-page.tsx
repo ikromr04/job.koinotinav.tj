@@ -19,7 +19,7 @@ function HomePage(): JSX.Element {
   return (
     <AppLayout>
       <main>
-        <BannersBlock />
+        <BannersBlock className="mb-6" />
 
         {vacancies && <HotVacancies vacancies={vacancies.filter(({ hot }) => hot)} />}
       </main>

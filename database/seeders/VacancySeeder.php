@@ -31,8 +31,9 @@ class VacancySeeder extends Seeder
         'title' => $faker->randomElement([
           "<h2 class=\"title\">{$faker->jobTitle}</h2>",
         ]),
+        'image' => "https://ui-avatars.com/api/?name=" . $faker->word . "&size=100&background=random",
         'content' => $faker->randomHtml(10),
-        'hot' => $faker->boolean(20),
+        'hot' => $faker->boolean(10),
         'city' => $faker->city,
         'direction' => $directions[$faker->numberBetween(0, 10)],
         'company_id' => $faker->numberBetween(1, 10),

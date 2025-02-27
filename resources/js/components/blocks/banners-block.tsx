@@ -5,8 +5,15 @@ import React, { ReactNode, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Icons } from '../icons';
+import classNames from 'classnames';
 
-function BannersBlock(): ReactNode {
+type BannersBlockProps = {
+  className?: string;
+}
+
+function BannersBlock({
+  className,
+}: BannersBlockProps): ReactNode {
   const dispatch = useAppDispatch();
   const banners = useAppSelector(getBanners);
 
@@ -18,7 +25,10 @@ function BannersBlock(): ReactNode {
 
   return (
     <Swiper
-      className="relative z-0 text-white"
+      className={classNames(
+        'relative z-0 text-white',
+        className,
+      )}
       spaceBetween={50}
       slidesPerView={1}
       loop
