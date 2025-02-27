@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Icons } from '../icons';
 import { Vacancies } from '@/types/vacancies';
+import { generatePath, Link } from 'react-router-dom';
+import { AppRoute } from '@/const/routes';
 
 type HotVacanciesProps = {
   vacancies: Vacancies;
@@ -12,8 +14,8 @@ function HotVacancies({
   vacancies,
 }: HotVacanciesProps): ReactNode {
   return (
-    <section className="">
-      <h2 className="md:text-3xl sm:text-2xl sm:leading-9 text-center md:leading-[52px] font-bold text-xl leading-7 mb-5 container">
+    <section className="p-2 -m-2">
+      <h2 className="container text-center font-semibold text-2xl mt-8 mb-6 md:mt-12 md:mb-10 md:text-3xl">
         Горячие вакансии
       </h2>
 
@@ -56,16 +58,23 @@ function HotVacancies({
           {vacancies.map((vacancy) => (
             <SwiperSlide
               key={JSON.stringify(vacancy)}
-              className="relative z-0 bg-white"
+              className="relative z-0 py-2"
             >
-              <div className="flex flex-col h-full items-center">
+              <Link
+                className="flex flex-col h-full items-center bg-white rounded shadow-md transition-all duration-300 transform hover:scale-[1.04]"
+                to={generatePath(AppRoute.Vacancies.Show, { id: vacancy.id })}
+              >
                 <img
-                  className="w-full aspect-[3/2] object-cover rounded mb-2 bg-gray-100"
+                  className="w-full aspect-[3/2] object-cover rounded-t bg-white"
                   src={vacancy.image}
                   alt={vacancy.direction}
                 />
-                <div key={vacancy.title} dangerouslySetInnerHTML={{ __html: vacancy.title }} />
-              </div>
+                <div
+                  className="p-2"
+                  key={vacancy.title}
+                  dangerouslySetInnerHTML={{ __html: vacancy.title }}
+                />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

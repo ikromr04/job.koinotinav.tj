@@ -26,7 +26,7 @@ class VacancySeeder extends Seeder
       'Начало карьеры, студенты',
     ];
 
-    foreach (range(1, 100) as $index) {
+    foreach (range(1, 72) as $index) {
       Vacancy::create([
         'title' => $faker->randomElement([
           "<h2 class=\"title\">{$faker->jobTitle}</h2>",
