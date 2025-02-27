@@ -35,7 +35,7 @@ function Pagination({
   };
 
   return (
-    <div className="flex items-center gap-2 text-primary">
+    <div className="flex items-center justify-center flex-wrap gap-2 text-primary">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
