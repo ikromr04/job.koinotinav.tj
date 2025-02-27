@@ -70,7 +70,7 @@ function HotVacancies({
                   alt={vacancy.direction}
                 />
                 <div
-                  className="p-2"
+                  className="py-3 px-6 my-auto text-center"
                   key={vacancy.title}
                   dangerouslySetInnerHTML={{ __html: vacancy.title }}
                 />
