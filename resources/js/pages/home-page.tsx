@@ -8,8 +8,8 @@ import { getVacancies } from '@/store/vacancies-slice/vacancies-selector';
 import { fetchVacanciesAction } from '@/store/vacancies-slice/vacancies-api-actions';
 import HotVacancies from '@/components/blocks/hot-vacancies';
 import SearchField from '../components/ui/search-field';
-import FilterForm from '@/components/forms/filter-form';
 import VacanciesBlock from '@/components/blocks/vacancies-block';
+import FilterForm from '@/components/forms/filter-form/filter-form';
 
 function HomePage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -34,10 +34,12 @@ function HomePage(): JSX.Element {
 
         <SearchField className="mb-6 md:mb-10" />
 
-        <div className="container mb-6 md:mb-10">
-          <FilterForm />
-          <VacanciesBlock />
-        </div>
+        {vacancies &&
+          <div className="container mb-6 md:mb-10">
+            <FilterForm vacancies={vacancies} />
+            <VacanciesBlock />
+          </div>
+        }
       </main>
     </AppLayout>
   );

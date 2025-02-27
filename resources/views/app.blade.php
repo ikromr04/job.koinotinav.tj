@@ -15,9 +15,9 @@
   <title>{{ env('APP_NAME') }}</title>
 </head>
 
-<body>
+<body class="group">
   <div class="flex flex-col min-h-screen" id="root"></div>
-  
+
   @viteReactRefresh
   @vite('resources/js/main.tsx')
 </body>

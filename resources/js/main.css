@@ -55,11 +55,11 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply pr-1;
 
   &::-webkit-scrollbar {
-    @apply w-0 md:w-2 bg-transparent h-0;
+    @apply w-1 bg-transparent h-0;
   }
 
   &::-webkit-scrollbar-thumb {
-    @apply bg-transparent w-0 md:w-2 md:bg-gray-200 rounded-sm cursor-grab;
+    @apply bg-transparent w-1 bg-gray-200 rounded-sm cursor-grab;
   }
 }
 

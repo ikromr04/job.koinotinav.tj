@@ -14,13 +14,14 @@ function HotVacancies({
   vacancies,
 }: HotVacanciesProps): ReactNode {
   return (
-    <section className="p-2 -m-2">
+    <section>
       <h2 className="container text-center font-semibold text-2xl mt-8 mb-6 md:mt-12 md:mb-10 md:text-3xl">
         Горячие вакансии
       </h2>
 
-      <div className="relative z-0 px-[5vw]">
+      <div className="relative z-0 px-[calc(5vw)]">
         <Swiper
+          className="relative z-0 p-4"
           spaceBetween={16}
           slidesPerView={1}
           loop
