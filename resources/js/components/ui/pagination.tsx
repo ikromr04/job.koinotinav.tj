@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icons } from '../icons';
+import classNames from 'classnames';
 
 interface PaginationProps {
   totalPages: number;
@@ -11,7 +12,7 @@ function Pagination({
   totalPages,
   currentPage,
   onPageChange,
-}:PaginationProps):JSX.Element {
+}: PaginationProps): JSX.Element {
   const getPagination = (): (number | string)[] => {
     const pages: (number | string)[] = [];
     const delta = 1;
@@ -34,13 +35,13 @@ function Pagination({
   };
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center gap-2 text-primary">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-2 py-1 border rounded disabled:opacity-50"
+        className="flex items-center justify-center w-10 h-10 rounded-lg disabled:opacity-50 disabled:pointer-events-none hover:border"
       >
-        <Icons.previous width={16} />
+        <Icons.previous height={14} />
       </button>
 
       {getPagination().map((page, index) =>
@@ -52,7 +53,10 @@ function Pagination({
           <button
             key={index}
             onClick={() => onPageChange(page as number)}
-            className={`px-3 py-1 border rounded ${page === currentPage ? 'bg-blue-500 text-white' : ''}`}
+            className={classNames(
+              'flex items-center justify-center text-lg w-10 h-10 rounded-lg border border-transparent disabled:opacity-50 disabled:pointer-events-none hover:border-gray-300',
+              page === currentPage && 'bg-primary-light text-white hover:border-transparent',
+            )}
           >
             {page}
           </button>
@@ -62,9 +66,9 @@ function Pagination({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-2 py-1 border rounded disabled:opacity-50"
+        className="flex items-center justify-center w-10 h-10 rounded-lg disabled:opacity-50 disabled:pointer-events-none hover:border"
       >
-        <Icons.next width={16} />
+        <Icons.next height={14} />
       </button>
     </div>
   );
