@@ -11,9 +11,12 @@ function DashboardLayout({
 }: DashboardLayoutProps): JSX.Element {
   return (
     <PrivateRoute>
-      <div className="grid grid-cols-[auto_1fr] w-screen h-screen bg-gray-100 border-none">
+      <div className="grid grid-cols-[230px_calc(100%-230px)] w-screen h-screen bg-gray-100 border-none overflow-hidden">
         <DashboardSidebar />
-        {children}
+
+        <div className="overflow-y-auto">
+          {children}
+        </div>
       </div>
     </PrivateRoute>
   );

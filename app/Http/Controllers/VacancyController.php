@@ -31,15 +31,29 @@ class VacancyController extends Controller
 
   public function update(Request $request): JsonResponse
   {
-    $vacancy = Vacancy::findOrFail($request->id)
-      ->update(
-        'title',
-        'content',
-        'hot',
-        'city',
-        'direction',
-        'company_id',
-      );
+    $vacancy = Vacancy::findOrFail($request->id);
+
+    $vacancy->title = $request->title;
+    $vacancy->content = $request->content;
+    $vacancy->hot = $request->hot === 'false' ? false : true;
+    $vacancy->city = $request->city;
+    $vacancy->direction = $request->direction;
+    if ($request->company_id) $vacancy->company_id = $request->company_id;
+
+    if ($request->hasFile('image')) {
+      if ($vacancy->image !== '/images/image-field.png' && file_exists(public_path($vacancy->image))) {
+        unlink(public_path($vacancy->image));
+      }
+
+      $file = request()->file('image');
+      $fileName = uniqid() . '.' . $file->extension();
+      $filePath = "/images/vacancies/$fileName";
+      $file->move(public_path('/images/vacancies'), $fileName);
+
+      $vacancy->image = $filePath;
+    }
+
+    $vacancy->update();
 
     return response()->json($vacancy, 200);
   }

@@ -94,22 +94,21 @@ function BannersPage(): ReactNode {
     },
   ];
 
-  if (!banners) return null;
-
   return (
     <DashboardLayout>
       <main>
         <h1 className="title mx-8 mt-4 mb-2">
-          Баннеры ({banners.length})
+          Баннеры ({banners?.length})
         </h1>
 
-        <DataTable
-          className="mx-4 mb-10"
-          data={banners}
-          columns={columns}
-          visibility={{}}
-          onCreateButtonClick={() => navigate(AppRoute.Dashboard.Banners.Create)}
-        />
+        {banners &&
+          <DataTable
+            className="mx-4 mb-10"
+            data={banners}
+            columns={columns}
+            visibility={{}}
+            onCreateButtonClick={() => navigate(AppRoute.Dashboard.Banners.Create)}
+          />}
       </main>
 
       <Modal isOpen={deleteModal.isOpen}>
