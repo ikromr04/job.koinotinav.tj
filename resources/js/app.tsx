@@ -15,6 +15,7 @@ import { useAppSelector } from './hooks';
 import { getAuthStatus } from './store/auth-slice/auth-selector';
 import { AuthorizationStatus } from './const/store';
 import Spinner from './components/ui/spinner';
+import VacanciesShowPage from './pages/vacancies-show-page';
 
 function App(): JSX.Element {
   const authStatus = useAppSelector(getAuthStatus);
@@ -38,6 +39,7 @@ function App(): JSX.Element {
         <Route path={AppRoute.Auth.Login} element={<LoginPage />} />
 
         <Route path={AppRoute.Main} element={<HomePage />} />
+        <Route path={AppRoute.Vacancies.Show} element={<VacanciesShowPage />} />
 
         <Route path={AppRoute.Dashboard.Index} element={<Navigate to={AppRoute.Dashboard.Banners.Index} />} />
 

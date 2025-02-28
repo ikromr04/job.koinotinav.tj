@@ -48,4 +48,10 @@ class VacancyController extends Controller
 
     return response()->noContent();
   }
+
+  public function resume(Request $request)
+  {
+    
+    return response()->noContent();
+  }
 }

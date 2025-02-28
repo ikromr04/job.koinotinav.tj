@@ -38,6 +38,7 @@ export const APIRoute = {
   Vacancies: {
     Index: '/vacancies',
     Show: '/vacancies/:id',
+    Resume: '/vacancies/resume',
   },
   Companies: {
     Index: '/companies',

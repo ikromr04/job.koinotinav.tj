@@ -17,6 +17,7 @@ Route::prefix('auth')->group(function () {
 
 Route::get('/banners', [BannerController::class, 'index']);
 Route::get('/vacancies', [VacancyController::class, 'index']);
+Route::post('/vacancies/resume', [VacancyController::class, 'resume']);
 Route::get('/companies', [CompanyController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {

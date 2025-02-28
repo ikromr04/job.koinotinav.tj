@@ -95,3 +95,29 @@ export const deleteVacancyAction = createAsyncThunk<VacancyId, {
     }
   },
 );
+
+export const sendResumeAction = createAsyncThunk<Vacancy, {
+  formData: FormData;
+  onSuccess?: () => void;
+  onValidationError?: (error: ValidationError) => void;
+  onFail?: (message: string) => void;
+}, {
+  extra: AxiosInstance;
+  rejectWithValue: ValidationError;
+}>(
+  'vacancies/sendResume',
+  async ({ formData, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+    try {
+      const { data } = await api.post(APIRoute.Vacancies.Resume, formData);
+      if (onSuccess) onSuccess();
+      return data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      const error: AxiosError<ValidationError> = err;
+      if (!error.response) throw err;
+      if (onValidationError && (error.response?.status === 422)) onValidationError(error.response.data);
+      if (onFail && (error.response?.status !== 422)) onFail(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  },
+);

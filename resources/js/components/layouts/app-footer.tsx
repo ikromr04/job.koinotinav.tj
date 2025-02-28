@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 function AppFooter(): JSX.Element {
   return (
-    <footer>
+    <footer className="mt-auto">
       <div className="relative z-0 flex flex-col items-center bg-anime bg-no-repeat bg-cover text-white py-6 md:py-10 lg:py-16">
         <div className="anim-container">
           <div className="anim"></div>
