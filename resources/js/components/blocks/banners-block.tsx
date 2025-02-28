@@ -21,7 +21,7 @@ function BannersBlock({
     if (!banners) dispatch(fetchBannersAction());
   }, [banners, dispatch]);
 
-  if (!banners) return null;
+  if (!banners || !banners.length) return null;
 
   return (
     <Swiper
