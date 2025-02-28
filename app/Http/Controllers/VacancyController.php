@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendResumeMail;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Mail;
 
 class VacancyController extends Controller
 {
@@ -51,7 +53,16 @@ class VacancyController extends Controller
 
   public function resume(Request $request)
   {
-    
+
+    $details = (object)[
+      'subject' => $request->vacancy ? 'Отклик на вакансию ' . strip_tags($request->vacancy) : 'Резюме',
+    ];
+
+    $filePath = $request->file('resume')->store('resumes', 'public');
+    $absoluteFilePath = storage_path("app/public/{$filePath}");
+
+    Mail::to(env('APP_EMAIL'))->send(new SendResumeMail($details, $absoluteFilePath));
+
     return response()->noContent();
   }
 }

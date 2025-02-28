@@ -1,10 +1,15 @@
 import { Vacancies } from '@/types/vacancies';
-import React from 'react';
+import React, { BaseSyntheticEvent, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Select from '../forms/filter-form/select';
 import { Option } from '@/types';
 import { Icons } from '@/components/icons';
 import Companies from '../forms/filter-form/companies';
+import classNames from 'classnames';
+import Spinner from '../ui/spinner';
+import { useAppDispatch } from '@/hooks';
+import { sendResumeAction } from '@/store/vacancies-slice/vacancies-api-actions';
+import { toast } from 'react-toastify';
 
 type FilterBlockProps = {
   vacancies: Vacancies;
@@ -15,9 +20,11 @@ function FilterBlock({
   vacancies,
   className,
 }: FilterBlockProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const cityOptions = [...new Set(vacancies.map(({ city }) => city))];
   const directionOptions = [...new Set(vacancies.map(({ direction }) => direction))];
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCityChange = (option: Option) => {
     document.getElementById('#vacancies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -103,6 +110,24 @@ function FilterBlock({
     });
   };
 
+  const handleInputChange = async (evt: BaseSyntheticEvent) => {
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+
+    formData.append('resume', evt.target.files[0]);
+
+    await dispatch(sendResumeAction({
+      formData,
+      onSuccess: () => {
+        toast.success('Ваше резюме успешно отправлено.');
+      },
+      onFail: () => toast.error('Не удалось отправить ваше резюме. Попробуйте позже.'),
+    }));
+
+    setIsSubmitting(false);
+  };
+
   return (
     <section className={className}>
       <button
@@ -166,12 +191,22 @@ function FilterBlock({
           Если Вы не нашли подходящую вакансию, прикрепите своё резюме для Резерва:
         </p>
 
-        <label className="flex items-center bg-secondary text-white rounded px-4 h-9 w-max shadow-md leading-none gap-2 cursor-pointer">
-          <Icons.attachFile width={16} /> Прикрепить файл
+        <label
+          className={classNames(
+            'flex items-center bg-secondary text-white rounded px-4 h-9 w-max shadow-md leading-none gap-2 cursor-pointer',
+            isSubmitting && 'pointer-events-none opacity-50'
+          )}
+        >
+          {isSubmitting
+            ? <Spinner className="!w-5 !h-5" />
+            : <Icons.attachFile width={16} />}
+
+          Прикрепить файл
 
           <input
             className="sr-only"
             type="file"
+            onChange={handleInputChange}
           />
         </label>
       </div>

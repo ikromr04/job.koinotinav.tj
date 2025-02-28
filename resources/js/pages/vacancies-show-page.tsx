@@ -3,11 +3,13 @@ import SimilarVacancies from '@/components/blocks/similar-vacancies';
 import { Icons } from '@/components/icons';
 import AppLayout from '@/components/layouts/app-layout';
 import Breadcrumbs from '@/components/ui/breadcrumbs';
+import Spinner from '@/components/ui/spinner';
 import { AppRoute } from '@/const/routes';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { fetchVacanciesAction, sendResumeAction } from '@/store/vacancies-slice/vacancies-api-actions';
 import { getVacancies } from '@/store/vacancies-slice/vacancies-selector';
-import React, { BaseSyntheticEvent, useEffect } from 'react';
+import classNames from 'classnames';
+import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -16,6 +18,7 @@ function VacanciesShowPage(): JSX.Element {
   const params = useParams();
   const vacancies = useAppSelector(getVacancies);
   const vacancy = vacancies?.find(({ id }) => id === +(params.id || 0)) || null;
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!vacancy && params.id) dispatch(fetchVacanciesAction());
@@ -23,19 +26,23 @@ function VacanciesShowPage(): JSX.Element {
 
   if (!vacancy) return <AppLayout>{null}</AppLayout>;
 
-  const handleInputChange = (evt: BaseSyntheticEvent) => {
+  const handleInputChange = async (evt: BaseSyntheticEvent) => {
+    setIsSubmitting(true);
+
     const formData = new FormData();
 
     formData.append('vacancy', vacancy.title);
     formData.append('resume', evt.target.files[0]);
 
-    dispatch(sendResumeAction({
+    await dispatch(sendResumeAction({
       formData,
       onSuccess: () => {
         toast.success('Ваша заявка успешно отправлена.');
       },
-      onFail: (message) => toast.error(message),
+      onFail: () => toast.error('Не удалось отправить ваше резюме. Попробуйте позже.'),
     }));
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -72,9 +79,14 @@ function VacanciesShowPage(): JSX.Element {
 
               <div className="mb-2">Прикрепить свое резюме</div>
 
-              <label className="flex items-center bg-secondary text-white rounded px-4 h-9 w-max shadow-md leading-none gap-2 cursor-pointer">
+              <label
+                className={classNames(
+                  'flex items-center bg-secondary text-white rounded px-4 h-9 w-max shadow-md leading-none gap-2 cursor-pointer',
+                  isSubmitting && 'pointer-events-none opacity-50'
+                )}
+              >
+                {isSubmitting && <Spinner className="!w-5 !h-5" />}
                 Откликнуться
-
                 <input
                   className="sr-only"
                   type="file"
