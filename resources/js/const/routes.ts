@@ -20,6 +20,8 @@ export const AppRoute = {
     },
     Companies: {
       Index: '/dashboard/companies',
+      Create: '/dashboard/companies/create',
+      Edit: '/dashboard/companies/:id',
     }
   },
   NotFound: '*',

@@ -9,13 +9,15 @@ import BannersEditPage from './pages/dashboard/banners/banners-edit-page';
 import VacanciesPage from './pages/dashboard/vacancies/vacancies-page';
 import VacanciesCreatePage from './pages/dashboard/vacancies/vacancies-create-page';
 import VacanciesEditPage from './pages/dashboard/vacancies/vacancies-edit-page';
-import CompaniesPage from './pages/dashboard/companies-page';
 import LoginPage from './pages/login-page';
 import { useAppSelector } from './hooks';
 import { getAuthStatus } from './store/auth-slice/auth-selector';
 import { AuthorizationStatus } from './const/store';
 import Spinner from './components/ui/spinner';
 import VacanciesShowPage from './pages/vacancies-show-page';
+import CompaniesPage from './pages/dashboard/companies/companies-page';
+import CompaniesEditPage from './pages/dashboard/companies/companies-edit-page';
+import CompaniesCreatePage from './pages/dashboard/companies/companies-create-page';
 
 function App(): JSX.Element {
   const authStatus = useAppSelector(getAuthStatus);
@@ -52,6 +54,8 @@ function App(): JSX.Element {
         <Route path={AppRoute.Dashboard.Vacancies.Edit} element={<VacanciesEditPage />} />
 
         <Route path={AppRoute.Dashboard.Companies.Index} element={<CompaniesPage />} />
+        <Route path={AppRoute.Dashboard.Companies.Create} element={<CompaniesCreatePage />} />
+        <Route path={AppRoute.Dashboard.Companies.Edit} element={<CompaniesEditPage />} />
 
         <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
       </Routes>

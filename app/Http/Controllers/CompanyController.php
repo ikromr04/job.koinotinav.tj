@@ -22,8 +22,8 @@ class CompanyController extends Controller
     $file->move(public_path('/images/companies'), $fileName);
 
     $company = Company::create([
+      'title' => $request->title,
       'logo' => $filePath,
-      'content' => $request->content,
     ]);
 
     return response()->json($company, 201);

@@ -1,21 +1,21 @@
-import BannersDeleteForm from '@/components/forms/banners/banners-delete-form';
+import CompaniesDeleteForm from '@/components/forms/companies/companies-delete-form';
 import DashboardLayout from '@/components/layouts/dashboard-layout';
 import Button from '@/components/ui/button';
 import DataTable from '@/components/ui/data-table';
 import Modal from '@/components/ui/modal';
 import { AppRoute } from '@/const/routes';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { fetchBannersAction } from '@/store/banners-slice/banners-api-actions';
-import { getBanners } from '@/store/banners-slice/banners-selector';
-import { Banner } from '@/types/banners';
+import { fetchCompaniesAction } from '@/store/companies-slice/companies-api-actions';
+import { getCompanies } from '@/store/companies-slice/companies-selector';
+import { Company } from '@/types/companies';
 import { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
-function BannersPage(): ReactNode {
+function CompaniesPage(): ReactNode {
   const dispatch = useAppDispatch();
-  const banners = useAppSelector(getBanners);
+  const companies = useAppSelector(getCompanies);
   const navigate = useNavigate();
   const [deleteModal, setDeleteModal] = useState({
     isOpen: false,
@@ -23,10 +23,10 @@ function BannersPage(): ReactNode {
   });
 
   useEffect(() => {
-    if (!banners) dispatch(fetchBannersAction());
-  }, [banners, dispatch]);
+    if (!companies) dispatch(fetchCompaniesAction());
+  }, [companies, dispatch]);
 
-  const columns: ColumnDef<Banner>[] = [
+  const columns: ColumnDef<Company>[] = [
     {
       id: 'ID',
       accessorKey: 'id',
@@ -34,24 +34,24 @@ function BannersPage(): ReactNode {
       enableSorting: true,
     },
     {
-      id: 'Фон',
-      accessorKey: 'background',
-      header: 'Фон',
+      id: 'Логотип',
+      accessorKey: 'logo',
+      header: 'Логотип',
       enableSorting: true,
       cell: ({ row }) => (
         <img
-          className="min-h-16 max-h-16 aspect-[1920/540] bg-gray-200 object-cover"
-          src={row.original.background}
+          className="min-h-16 max-h-16 aspect-[1/1] bg-gray-200 object-contain rounded-full"
+          src={row.original.logo}
         />
       ),
     },
     {
-      id: 'Содержание',
-      accessorKey: 'content',
-      header: 'Содержание',
+      id: 'Название',
+      accessorKey: 'title',
+      header: 'Название',
       enableSorting: true,
       cell: ({ row }) => (
-        <div dangerouslySetInnerHTML={{ __html: row.original.content }} />
+        <div dangerouslySetInnerHTML={{ __html: row.original.title }} />
       ),
     },
     {
@@ -78,7 +78,7 @@ function BannersPage(): ReactNode {
           <Button
             icon="edit"
             variant="warn"
-            href={generatePath(AppRoute.Dashboard.Banners.Edit, { id: row.original.id })}
+            href={generatePath(AppRoute.Dashboard.Companies.Edit, { id: row.original.id })}
           >
             <span className="sr-only">Редактировать</span>
           </Button>
@@ -98,26 +98,24 @@ function BannersPage(): ReactNode {
     <DashboardLayout>
       <main>
         <h1 className="title mx-8 mt-4 mb-2">
-          Баннеры ({banners?.length})
+          Компании ({companies?.length})
         </h1>
 
-        {banners &&
+        {companies &&
           <DataTable
             className="mx-4 mb-10"
-            data={banners}
+            data={companies}
             columns={columns}
-            visibility={{
-              'Содержание': false,
-            }}
-            onCreateButtonClick={() => navigate(AppRoute.Dashboard.Banners.Create)}
+            visibility={{}}
+            onCreateButtonClick={() => navigate(AppRoute.Dashboard.Companies.Create)}
           />}
       </main>
 
       <Modal isOpen={deleteModal.isOpen}>
-        <BannersDeleteForm modal={deleteModal} setModal={setDeleteModal} />
+        <CompaniesDeleteForm modal={deleteModal} setModal={setDeleteModal} />
       </Modal>
     </DashboardLayout>
   );
 }
 
-export default BannersPage;
+export default CompaniesPage;
