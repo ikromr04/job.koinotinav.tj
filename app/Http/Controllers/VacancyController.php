@@ -17,14 +17,20 @@ class VacancyController extends Controller
 
   public function store(Request $request): JsonResponse
   {
-    $vacancy = Vacancy::create($request->only(
-      'title',
-      'content',
-      'hot',
-      'city',
-      'direction',
-      'company_id',
-    ));
+    $file = request()->file('image');
+    $fileName = uniqid() . '.' . $file->extension();
+    $filePath = "/images/vacancies/$fileName";
+    $file->move(public_path('/images/vacancies'), $fileName);
+
+    $vacancy = Vacancy::create([
+      'image' => $filePath,
+      'title' => $request->title,
+      'content' => $request->content,
+      'hot' => $request->hot === 'false' ? false : true,
+      'city' => $request->city,
+      'direction' => $request->direction,
+      'company_id' => $request->company_id ?? null,
+    ]);
 
     return response()->json($vacancy, 201);
   }

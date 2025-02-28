@@ -106,6 +106,14 @@ function VacanciesPage(): ReactNode {
       cell: ({ row }) => (
         <div className="flex items-center gap-1">
           <Button
+            icon="visibility"
+            variant="light"
+            href={generatePath(AppRoute.Vacancies.Show, { id: row.original.id })}
+            target="_blank"
+          >
+            <span className="sr-only">Просмотреть на сайте</span>
+          </Button>
+          <Button
             icon="edit"
             variant="warn"
             href={generatePath(AppRoute.Dashboard.Vacancies.Edit, { id: row.original.id })}

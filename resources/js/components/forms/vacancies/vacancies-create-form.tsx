@@ -1,57 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Form, Formik, FormikHelpers } from 'formik';
 import classNames from 'classnames';
-import { useAppDispatch } from '@/hooks';
-import { BannersStoreDTO } from '@/dto/banners';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import ImageField from '@/components/ui/fields/image-field';
 import Button from '@/components/ui/button';
 import EditorField from '@/components/ui/fields/editor-field/editor-field';
-import { storeBannerAction } from '@/store/banners-slice/banners-api-actions';
 import { toast } from 'react-toastify';
+import { VacanciesStoreDTO } from '@/dto/vacancies';
+import { storeVacancyAction } from '@/store/vacancies-slice/vacancies-api-actions';
+import TextField from '@/components/ui/fields/text-field';
+import { getCompanies } from '@/store/companies-slice/companies-selector';
+import { fetchCompaniesAction } from '@/store/companies-slice/companies-api-actions';
+import SelectField from '@/components/ui/fields/select-field';
 
 const validationSchema = Yup.object().shape({
-  background: Yup.mixed()
-    .required('Обязательное поле.')
-    .test(
-      'fileSize',
-      'Размер файла слишком большой (макс. 2MB)',
-      (value) => !value || (value instanceof File && value.size <= 2 * 1024 * 1024)
-    )
-    .test(
-      'fileType',
-      'Неподдерживаемый формат файла. Разрешены только JPEG, JPG или PNG.',
-      (value) =>
-        !value ||
-        (value instanceof File &&
-          ['image/jpeg', 'image/jpg', 'image/png'].includes(value.type))
-    ),
+  title: Yup.string().required('Обязательное поле.'),
   content: Yup.string().required('Обязательное поле.'),
+  hot: Yup.string().required('Обязательное поле.'),
+  city: Yup.string().required('Обязательное поле.'),
+  direction: Yup.string().required('Обязательное поле.'),
+  image: Yup.mixed().required('Обязательное поле.'),
 });
 
-function BannersCreateForm(): JSX.Element {
+function VacanciesCreateForm(): JSX.Element {
   const dispatch = useAppDispatch();
+  const companies = useAppSelector(getCompanies);
   const [key, setKey] = useState(1);
-  const initialValues: BannersStoreDTO = {
-    background: '',
+  const initialValues: VacanciesStoreDTO = {
+    title: '',
     content: '',
+    hot: false,
+    city: '',
+    direction: '',
+    image: '',
   };
 
+  useEffect(() => {
+    if (!companies) dispatch(fetchCompaniesAction());
+  }, [companies, dispatch]);
+
   const onSubmit = async (
-    values: BannersStoreDTO,
-    helpers: FormikHelpers<BannersStoreDTO>
+    values: VacanciesStoreDTO,
+    helpers: FormikHelpers<VacanciesStoreDTO>
   ) => {
     helpers.setSubmitting(true);
 
     const formData = new FormData();
-    formData.append('background', values.background);
+    formData.append('title', values.title);
     formData.append('content', values.content);
+    formData.append('hot', values.hot.toString());
+    formData.append('city', values.city);
+    formData.append('image', values.image);
+    formData.append('direction', values.direction);
+    if (values.company_id) formData.append('company_id', values.company_id.toString());
 
-    await dispatch(storeBannerAction({
+    await dispatch(storeVacancyAction({
       formData,
       onSuccess: () => {
         helpers.resetForm();
-        toast.success('Баннер успешно добавлен.');
+        toast.success('Вакансия успешно добавлена.');
         setKey((prevKey) => prevKey + 1);
       },
       onValidationError: (error) => helpers.setErrors({ ...error.errors }),
@@ -67,23 +75,51 @@ function BannersCreateForm(): JSX.Element {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, values }) => (
-        <Form className="flex flex-col gap-3 p-6 bg-white rounded shadow">
+      {({ isSubmitting, values, setFieldValue }) => (
+        <Form className="flex flex-col gap-3 p-6 bg-white rounded shadow mb-16">
+          <EditorField
+            name="title"
+            label="Заголовок"
+            required
+          />
+
           <EditorField
             name="content"
             label="Содержание"
             required
           />
 
+          <div className="grid grid-cols-4 gap-4">
+            <TextField name="city" label="Город" />
+
+            <TextField name="direction" label="Направление" />
+
+            {companies &&
+              <SelectField
+                name="company_id"
+                label="Компания"
+                cleanable
+                onClean={() => setFieldValue('company_id', '')}
+                options={companies.map((company) => ({ value: company.id.toString(), label: company.title }))}
+              />}
+
+            <label className="flex items-center mt-6 gap-2 text-sm text-gray-500 ml-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={values.hot}
+                onChange={() => setFieldValue('hot', !values.hot)}
+              />
+              Горячая вакансия
+            </label>
+
+          </div>
+
           <ImageField
-            className="w-full"
-            imgClass={classNames(
-              'w-full aspect-[1920/540]',
-              !values.background && '!object-contain',
-            )}
             key={key.toString()}
-            name="background"
-            label="Фон"
+            className="w-[320px]"
+            imgClass="aspect-[3/2] w-full"
+            name="image"
+            label="Картинка"
             accept=".jpeg, .jpg, .png"
             required
           />
@@ -104,4 +140,4 @@ function BannersCreateForm(): JSX.Element {
   );
 }
 
-export default BannersCreateForm;
+export default VacanciesCreateForm;

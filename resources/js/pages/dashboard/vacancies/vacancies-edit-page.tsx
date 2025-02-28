@@ -22,7 +22,7 @@ function VacanciesEditPage(): JSX.Element {
     <DashboardLayout>
       <main className="flex flex-col px-6 py-3">
         <h1 className="title mb-1">
-          Добавить вакансию
+          Редактировать вакансию
         </h1>
 
         <Breadcrumbs

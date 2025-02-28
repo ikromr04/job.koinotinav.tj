@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Form, Formik, FormikHelpers } from 'formik';
-import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { VacanciesStoreDTO } from '@/dto/vacancies';
 import ImageField from '@/components/ui/fields/image-field';
@@ -14,13 +13,15 @@ import TextField from '@/components/ui/fields/text-field';
 import { getCompanies } from '@/store/companies-slice/companies-selector';
 import { fetchCompaniesAction } from '@/store/companies-slice/companies-api-actions';
 import SelectField from '@/components/ui/fields/select-field';
+import { AppRoute } from '@/const/routes';
+import { generatePath } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
   title: Yup.mixed().required('Обязательное поле.'),
   content: Yup.string().required('Обязательное поле.'),
   city: Yup.string().required('Обязательное поле.'),
-  image: Yup.string().required('Обязательное поле.'),
   direction: Yup.string().required('Обязательное поле.'),
+  image: Yup.mixed().required('Обязательное поле.'),
 });
 
 type VacanciesEditFormProps = {
@@ -132,16 +133,25 @@ function VacanciesEditForm({
             required
           />
 
-          <Button
-            className={classNames('justify-center ml-auto', isSubmitting && 'opacity-60')}
-            type="submit"
-            disabled={isSubmitting}
-            loading={isSubmitting}
-            icon="add"
-            variant="success"
-          >
-            Сохранить
-          </Button>
+          <div className="flex gap-2 justify-end">
+            <Button
+              icon="visibility"
+              variant="warn"
+              href={generatePath(AppRoute.Vacancies.Show, { id: vacancy.id })}
+              target="_blank"
+            >
+              Просмотреть на сайте
+            </Button>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              loading={isSubmitting}
+              icon="add"
+              variant="success"
+            >
+              Сохранить
+            </Button>
+          </div>
         </Form>
       )}
     </Formik>
