@@ -25,19 +25,20 @@ function HomePage(): JSX.Element {
         <BannersBlock />
 
         {vacancies && (vacancies.length > 0) &&
-          <HotVacancies vacancies={vacancies.filter(({ hot }) => hot)} />}
+          <>
+            <HotVacancies vacancies={vacancies.filter(({ hot }) => hot)} />
 
-        <h1 className="container text-center font-semibold text-2xl mt-8 mb-6 md:mt-12 md:mb-10 md:text-3xl" id="#vacancies">
-          Актуальные вакансии
-        </h1>
+            <h1 className="container text-center font-semibold text-2xl mt-8 mb-6 md:mt-12 md:mb-10 md:text-3xl" id="#vacancies">
+              Актуальные вакансии
+            </h1>
 
-        <SearchField className="mb-6" />
+            <SearchField className="mb-6" />
 
-        {vacancies &&
-          <div className="container mb-6 md:mb-10 lg:grid lg:grid-cols-[320px,1fr] lg:gap-x-6">
-            <FilterBlock className="mb-6" vacancies={vacancies} />
-            <VacanciesBlock vacancies={vacancies} />
-          </div>}
+            <div className="container mb-6 md:mb-10 lg:grid lg:grid-cols-[320px,1fr] lg:gap-x-6">
+              <FilterBlock className="mb-6" vacancies={vacancies} />
+              <VacanciesBlock vacancies={vacancies} />
+            </div>
+          </>}
       </main>
     </AppLayout>
   );
