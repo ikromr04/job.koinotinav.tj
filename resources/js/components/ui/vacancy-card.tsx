@@ -25,7 +25,7 @@ function VacancyCard({
       )}
       to={generatePath(AppRoute.Vacancies.Show, { id: vacancy.id })}
     >
-      <div className="mb-2">
+      <div className="mb-2 vacancy-title">
         <div
           className="mb-4"
           dangerouslySetInnerHTML={{ __html: vacancy.title }}

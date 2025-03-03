@@ -3,10 +3,12 @@ import React from 'react';
 
 type AppLogoProps = {
   className?: string;
+  href: string;
 };
 
 function AppLogo({
   className,
+  href,
 }: AppLogoProps): JSX.Element {
   return (
     <a
@@ -14,7 +16,7 @@ function AppLogo({
         'flex max-w-max max-h-max',
         className,
       )}
-      href="https://koinotinav.tj/"
+      href={href}
     >
       <img
         src="/images/main-logo.svg"

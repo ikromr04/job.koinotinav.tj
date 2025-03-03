@@ -13,7 +13,7 @@ function DashboardSidebar(): JSX.Element {
   return (
     <aside className="flex flex-col bg-white border-r shadow">
       <nav className="flex flex-col grow">
-        <AppLogo className="m-4 mr-6" />
+        <AppLogo href={AppRoute.Main} className="m-4 mr-6" />
 
         <hr />
 

@@ -8,7 +8,7 @@ function AppHeader(): JSX.Element {
   return (
     <header>
       <div className="container flex items-center gap-x-4 pt-4 pb-2 md:pt-8 md:pb-6 lg:pt-16 lg:pb-8">
-        <AppLogo />
+        <AppLogo href="https://koinotinav.tj/" />
 
         <Link className="sr-only sm:not-sr-only flex items-center gap-2 ml-auto sm:ml-12" to="mailto:info@koinotinav.tj">
           <Icons.mail width={20} height={16} /> info@koinotinav.tj
