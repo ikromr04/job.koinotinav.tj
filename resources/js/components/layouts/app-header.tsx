@@ -10,17 +10,28 @@ function AppHeader(): JSX.Element {
       <div className="container flex items-center gap-x-4 pt-4 pb-2 md:pt-8 md:pb-6 lg:pt-16 lg:pb-8">
         <AppLogo />
 
-        <Link className="flex items-center gap-2 ml-auto sm:ml-12" to="mailto:info@koinotinav.tj">
-          <Icons.mail width={18} height={16} />
-          <span className="sr-only sm:not-sr-only">info@koinotinav.tj</span>
+        <Link className="sr-only sm:not-sr-only flex items-center gap-2 ml-auto sm:ml-12" to="mailto:info@koinotinav.tj">
+          <Icons.mail width={20} height={16} /> info@koinotinav.tj
         </Link>
-        <Link className="flex items-center gap-2" to="https://t.me/hrkoinotinav" target="_blank">
-          <Icons.telegram width={16} height={16} />
-          <span className="sr-only sm:not-sr-only">@hrkoinotinav</span>
+        <Link className="sr-only sm:not-sr-only flex items-center gap-2" to="https://t.me/hrkoinotinav" target="_blank">
+          <Icons.telegram width={20} height={14} /> @hrkoinotinav
         </Link>
+
+        <div className="flex items-center gap-x-2 ml-auto">
+          <Icons.globe width={20} height={18} />
+
+          <ul className="flex items-center gap-x-2">
+            <li className="text-primary-light">
+              <div>Ru</div>
+            </li>
+            <li className="locales__item">
+              <div>En</div>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <nav className="relative bg-anime text-white py-1 md:py-4 lg:py-7">
+      <nav className="relative bg-anime bg-cover text-white py-1 md:py-4 lg:py-7">
         <div className="anim-container">
           <div className="anim"></div>
           <div className="anim second"></div>
@@ -66,7 +77,7 @@ function AppHeader(): JSX.Element {
             </li>
           </ul>
 
-          <Link className="flex items-center gap-2 justify-center border-[2px] border-white font-semibold rounded lg:px-8 lg:h-12 sr-only lg:not-sr-only" to={AppRoute.Main}>
+          <Link className="flex items-center gap-2 justify-center border-[2px] border-secondary font-semibold rounded lg:px-8 lg:h-12 sr-only lg:not-sr-only" to={AppRoute.Main}>
             <Icons.career width={18} height={18} /> Карьера
           </Link>
         </div>

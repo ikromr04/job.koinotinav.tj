@@ -26,6 +26,22 @@
   src: url('../../fonts/DINPro-Bold.woff') format('woff');
 }
 
+body {
+  @apply -mr-2 overflow-x-hidden;
+
+  &::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+  }
+}
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
