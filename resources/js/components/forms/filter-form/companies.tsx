@@ -43,29 +43,34 @@ function Companies({
         Все компании
       </button>
 
-      {companies?.map((company) => (
-        <button
-          key={JSON.stringify(company)}
-          className={classNames(
-            'flex items-center gap-2 p-1 pr-2 rounded-l-full h-12 transition-all duration-300 text-left leading-[1.2] hover:bg-gray-100',
-            value === company.id.toString() && 'bg-primary-light/20 pointer-events-none',
-          )}
-          type="button"
-          onClick={() => onChange(company.id.toString())}
-        >
-          <img
-            className="flex min-w-10 min-h-10 rounded-full"
-            src={company.logo}
-            width={40}
-            height={40}
-            alt={company.title}
-          />
-          {company.title}
-          <span className="flex items-center justify-center text-xs leading-none ml-auto min-w-5 min-h-5 rounded-full bg-primary-light text-white">
-            {vacancies.filter(({ company_id }) => company_id === company.id).length}
-          </span>
-        </button>
-      ))}
+      {companies?.map((company) => ({
+        ...company,
+        vacancies: vacancies.filter(({ company_id }) => company_id === company.id).length,
+      })).filter(({ vacancies }) => vacancies)
+        .sort((a, b) => b.vacancies - a.vacancies)
+        .map((company) => (
+          <button
+            key={JSON.stringify(company)}
+            className={classNames(
+              'flex items-center gap-2 p-1 pr-2 rounded-l-full h-12 transition-all duration-300 text-left leading-[1.2] hover:bg-gray-100',
+              value === company.id.toString() && 'bg-primary-light/20 pointer-events-none',
+            )}
+            type="button"
+            onClick={() => onChange(company.id.toString())}
+          >
+            <img
+              className="flex min-w-10 min-h-10 rounded-full object-contain"
+              src={company.logo}
+              width={40}
+              height={40}
+              alt={company.title}
+            />
+            {company.title}
+            <span className="flex items-center justify-center text-xs leading-none ml-auto min-w-5 min-h-5 rounded-full bg-primary-light text-white">
+              {vacancies.filter(({ company_id }) => company_id === company.id).length}
+            </span>
+          </button>
+        ))}
     </div>
   );
 }

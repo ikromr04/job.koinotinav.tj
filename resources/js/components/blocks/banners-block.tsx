@@ -23,6 +23,28 @@ function BannersBlock({
 
   if (!banners || !banners.length) return null;
 
+  if (banners.length === 1) {
+    return (
+      <div className="relative z-0 flex items-center py-8 min-h-60 md:py-12 md:min-h-96 lg:py-16 lg:min-h-[540px] text-white">
+        <div className="container flex h-full items-center md:px-8 lg:px-14">
+          <div className="max-w-[540px]">
+            <div key={banners[0].content} dangerouslySetInnerHTML={{ __html: banners[0].content }} />
+            <img
+              className="absolute left-0 top-0 -z-20 w-full h-full object-cover"
+              src={banners[0].background}
+              alt="Баннер"
+            />
+            <img
+              className="absolute left-0 top-0 -z-10 w-full h-full object-cover object-left"
+              src="/images/banners/bg.svg"
+              alt="Наложение"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Swiper
       className={classNames(
