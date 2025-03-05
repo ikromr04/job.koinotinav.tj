@@ -93,14 +93,14 @@ function HotVacancies({
                     src={vacancy.image}
                     alt={vacancy.direction}
                   />
-                  <div className="py-3 px-6 my-auto flex items-center gap-2 justify-between w-full">
+                  <div className="py-3 px-6 w-full flex flex-col justify-between h-full gap-2">
                     <div
                       className="overflow-hidden"
                       key={vacancy.title}
                       dangerouslySetInnerHTML={{ __html: vacancy.title }}
                     />
                     <img
-                      className="min-w-10 min-h-10 rounded-full object-contain"
+                      className="min-w-10 min-h-10 rounded-full object-contain ml-auto"
                       src={companies?.find(({ id }) => id === vacancy.company_id)?.logo}
                       width={40}
                       height={40}
