@@ -100,7 +100,7 @@ function HotVacancies({
                       dangerouslySetInnerHTML={{ __html: vacancy.title }}
                     />
                     <img
-                      className="min-w-10 min-h-10 rounded-full object-contain ml-auto"
+                      className="w-1/2 h-auto object-contain ml-auto"
                       src={companies?.find(({ id }) => id === vacancy.company_id)?.logo}
                       width={40}
                       height={40}
