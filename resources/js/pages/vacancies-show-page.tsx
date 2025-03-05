@@ -6,25 +6,29 @@ import Breadcrumbs from '@/components/ui/breadcrumbs';
 import Spinner from '@/components/ui/spinner';
 import { AppRoute } from '@/const/routes';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import { fetchBannersAction } from '@/store/banners-slice/banners-api-actions';
+import { getBanners } from '@/store/banners-slice/banners-selector';
 import { fetchVacanciesAction, sendResumeAction } from '@/store/vacancies-slice/vacancies-api-actions';
 import { getVacancies } from '@/store/vacancies-slice/vacancies-selector';
 import classNames from 'classnames';
-import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
+import React, { BaseSyntheticEvent, ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-function VacanciesShowPage(): JSX.Element {
+function VacanciesShowPage(): ReactNode {
   const dispatch = useAppDispatch();
   const params = useParams();
   const vacancies = useAppSelector(getVacancies);
+  const banners = useAppSelector(getBanners);
   const vacancy = vacancies?.find(({ id }) => id === +(params.id || 0)) || null;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!vacancy && params.id) dispatch(fetchVacanciesAction());
-  }, [dispatch, params.id, vacancy]);
+    if (!banners) dispatch(fetchBannersAction());
+  }, [banners, dispatch, params.id, vacancy]);
 
-  if (!vacancy) return <AppLayout>{null}</AppLayout>;
+  if (!vacancy || !banners) return null;
 
   const handleInputChange = async (evt: BaseSyntheticEvent) => {
     setIsSubmitting(true);
@@ -67,7 +71,7 @@ function VacanciesShowPage(): JSX.Element {
           <div className="md:grid md:grid-cols-[calc(100%-208px),208px]">
             <div className="mb-6 md:mr-6 bg-white rounded-lg p-6">
               <div className="flex items-center gap-2 text-gray-500 mb-4">
-                <Icons.location className="text-success" width={16} />
+                <Icons.location className="text-primary" width={16} />
                 {vacancy.city}
               </div>
 

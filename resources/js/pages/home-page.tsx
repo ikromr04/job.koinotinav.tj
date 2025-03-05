@@ -2,7 +2,7 @@ import 'swiper/css';
 
 import BannersBlock from '@/components/blocks/banners-block';
 import AppLayout from '@/components/layouts/app-layout';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { getVacancies } from '@/store/vacancies-slice/vacancies-selector';
 import { fetchVacanciesAction } from '@/store/vacancies-slice/vacancies-api-actions';
@@ -10,14 +10,24 @@ import HotVacancies from '@/components/blocks/hot-vacancies';
 import SearchField from '../components/ui/search-field';
 import VacanciesBlock from '@/components/blocks/vacancies-block';
 import FilterBlock from '@/components/blocks/filter-block';
+import { getCompanies } from '@/store/companies-slice/companies-selector';
+import { fetchCompaniesAction } from '@/store/companies-slice/companies-api-actions';
+import { getBanners } from '@/store/banners-slice/banners-selector';
+import { fetchBannersAction } from '@/store/banners-slice/banners-api-actions';
 
-function HomePage(): JSX.Element {
+function HomePage(): ReactNode {
   const dispatch = useAppDispatch();
   const vacancies = useAppSelector(getVacancies);
+  const companies = useAppSelector(getCompanies);
+  const banners = useAppSelector(getBanners);
 
   useEffect(() => {
     if (!vacancies) dispatch(fetchVacanciesAction());
-  }, [dispatch, vacancies]);
+    if (!companies) dispatch(fetchCompaniesAction());
+    if (!banners) dispatch(fetchBannersAction());
+  }, [banners, companies, dispatch, vacancies]);
+
+  if (!vacancies || !companies || !banners) return null;
 
   return (
     <AppLayout>

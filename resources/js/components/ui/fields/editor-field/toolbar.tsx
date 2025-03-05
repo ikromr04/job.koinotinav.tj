@@ -35,6 +35,19 @@ function Toolbar({
     setIsOpen(false);
   };
 
+  const toggleLink = () => {
+    const previousLink = editor?.getAttributes('link').href;
+
+    if (previousLink) {
+      editor?.chain().focus().unsetLink().run();
+    } else {
+      const url = prompt('Введите URL');
+      if (url) {
+        editor?.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+      }
+    }
+  };
+
   return (
     <div className="flex items-center border border-gray-200 border-b-0 rounded-t p-[1px] gap-1">
       <ul className="flex gap-[1px] text-sm">
@@ -127,6 +140,19 @@ function Toolbar({
           >
             <Tooltip label="Заголовок 4" position="top" />
             H6
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            onClick={toggleLink}
+            className={classNames(
+              'flex items-center border border-transparent justify-center w-7 h-7 hover:border-gray-200',
+              editor.isActive('link') ? 'bg-gray-100 text-success' : ''
+            )}
+          >
+            <Tooltip label="Ссылка" position="top" />
+            link
           </button>
         </li>
       </ul>

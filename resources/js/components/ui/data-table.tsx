@@ -118,11 +118,11 @@ export default function DataTable<T>({
         <tbody className="bg-gray-50">
           {table.getRowModel().rows.map((row) => (
             <tr
-              key={row.id}
+              key={JSON.stringify(row.original)}
               className="border-b"
             >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="p-2">
+                <td key={JSON.stringify(cell)} className="p-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

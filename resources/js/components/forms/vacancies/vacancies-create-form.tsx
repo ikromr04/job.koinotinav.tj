@@ -17,10 +17,8 @@ import SelectField from '@/components/ui/fields/select-field';
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Обязательное поле.'),
   content: Yup.string().required('Обязательное поле.'),
-  hot: Yup.string().required('Обязательное поле.'),
   city: Yup.string().required('Обязательное поле.'),
   direction: Yup.string().required('Обязательное поле.'),
-  image: Yup.mixed().required('Обязательное поле.'),
 });
 
 function VacanciesCreateForm(): JSX.Element {
@@ -30,10 +28,8 @@ function VacanciesCreateForm(): JSX.Element {
   const initialValues: VacanciesStoreDTO = {
     title: '',
     content: '',
-    hot: false,
     city: '',
     direction: '',
-    image: '',
   };
 
   useEffect(() => {
@@ -49,9 +45,9 @@ function VacanciesCreateForm(): JSX.Element {
     const formData = new FormData();
     formData.append('title', values.title);
     formData.append('content', values.content);
-    formData.append('hot', values.hot.toString());
+    formData.append('hot', (values.hot || false).toString());
     formData.append('city', values.city);
-    formData.append('image', values.image);
+    formData.append('image', values.image || '');
     formData.append('direction', values.direction);
     if (values.company_id) formData.append('company_id', values.company_id.toString());
 
@@ -121,7 +117,6 @@ function VacanciesCreateForm(): JSX.Element {
             name="image"
             label="Картинка"
             accept=".jpeg, .jpg, .png"
-            required
           />
 
           <Button

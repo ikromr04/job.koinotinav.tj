@@ -5,6 +5,8 @@ import { Icons } from '../icons';
 import { Vacancies } from '@/types/vacancies';
 import { generatePath, Link } from 'react-router-dom';
 import { AppRoute } from '@/const/routes';
+import { useAppSelector } from '@/hooks';
+import { getCompanies } from '@/store/companies-slice/companies-selector';
 
 type HotVacanciesProps = {
   vacancies: Vacancies;
@@ -13,6 +15,8 @@ type HotVacanciesProps = {
 function HotVacancies({
   vacancies,
 }: HotVacanciesProps): ReactNode {
+  const companies = useAppSelector(getCompanies);
+
   const getSlidesCount = (): number => {
     switch (true) {
       case (window.innerWidth < 605):
@@ -89,11 +93,20 @@ function HotVacancies({
                     src={vacancy.image}
                     alt={vacancy.direction}
                   />
-                  <div
-                    className="py-3 px-6 my-auto text-center"
-                    key={vacancy.title}
-                    dangerouslySetInnerHTML={{ __html: vacancy.title }}
-                  />
+                  <div className="py-3 px-6 my-auto flex items-center gap-2 justify-between w-full">
+                    <div
+                      className="overflow-hidden"
+                      key={vacancy.title}
+                      dangerouslySetInnerHTML={{ __html: vacancy.title }}
+                    />
+                    <img
+                      className="min-w-10 min-h-10 rounded-full object-contain"
+                      src={companies?.find(({ id }) => id === vacancy.company_id)?.logo}
+                      width={40}
+                      height={40}
+                      alt={companies?.find(({ id }) => id === vacancy.company_id)?.title}
+                    />
+                  </div>
                 </Link>
               </SwiperSlide>
             ))}

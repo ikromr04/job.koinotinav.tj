@@ -42,7 +42,7 @@ function VacanciesPage(): ReactNode {
       accessorKey: 'hot',
       header: '🔥',
       enableSorting: true,
-      cell: ({ row }) => <input type="checkbox" checked={row.original.hot} />,
+      cell: ({ row }) => <input type="checkbox" checked={row.original.hot} readOnly />,
     },
     {
       id: 'Заголовок',
@@ -82,7 +82,7 @@ function VacanciesPage(): ReactNode {
       accessorKey: 'company',
       header: 'Компания',
       enableSorting: true,
-      cell: ({ row }) => companies?.find(({ id }) => id === row.original.company_id)?.title,
+      cell: ({ row }) => companies?.find(({ id }) => +id === Number(row.original.company_id))?.title,
     },
     {
       id: 'Дата добавления',

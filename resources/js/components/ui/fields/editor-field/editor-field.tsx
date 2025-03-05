@@ -21,6 +21,7 @@ import Heading from '@tiptap/extension-heading';
 import TextAlign from '@tiptap/extension-text-align';
 import Image from '@tiptap/extension-image';
 import TextStyle from '@tiptap/extension-text-style';
+import Link from '@tiptap/extension-link';
 
 type EditorFieldProps = {
   name: string;
@@ -73,6 +74,14 @@ export default function EditorField({
       }),
       Text,
       CustomTextStyle,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        linkOnPaste: true,
+        HTMLAttributes: {
+          class: 'text-blue-500',
+        }
+      }),
       Bold,
       Italic,
       Underline,

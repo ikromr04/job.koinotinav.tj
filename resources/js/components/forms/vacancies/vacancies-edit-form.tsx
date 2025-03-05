@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useAppDispatch, useAppSelector } from '@/hooks';
@@ -21,7 +21,6 @@ const validationSchema = Yup.object().shape({
   content: Yup.string().required('Обязательное поле.'),
   city: Yup.string().required('Обязательное поле.'),
   direction: Yup.string().required('Обязательное поле.'),
-  image: Yup.mixed().required('Обязательное поле.'),
 });
 
 type VacanciesEditFormProps = {
@@ -57,9 +56,9 @@ function VacanciesEditForm({
     const formData = new FormData();
     formData.append('title', values.title);
     formData.append('content', values.content);
-    formData.append('hot', values.hot.toString());
+    formData.append('hot', (values.hot || false).toString());
     formData.append('city', values.city);
-    formData.append('image', values.image);
+    formData.append('image', values.image || '');
     formData.append('direction', values.direction);
     if (values.company_id) formData.append('company_id', values.company_id.toString());
 
@@ -107,8 +106,6 @@ function VacanciesEditForm({
               <SelectField
                 name="company_id"
                 label="Компания"
-                cleanable
-                onClean={() => setFieldValue('company_id', '')}
                 options={companies.map((company) => ({ value: company.id.toString(), label: company.title }))}
               />}
 
@@ -116,7 +113,7 @@ function VacanciesEditForm({
               <input
                 type="checkbox"
                 checked={values.hot}
-                onChange={() => setFieldValue('hot', !values.hot)}
+                onChange={(evt: BaseSyntheticEvent) => setFieldValue('hot', evt.target.checked ? true : false)}
               />
               Горячая вакансия
             </label>

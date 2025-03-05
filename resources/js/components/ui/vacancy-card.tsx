@@ -36,7 +36,7 @@ function VacancyCard({
       </div>
 
       <div className="flex items-center gap-2 text-gray-500 ml-auto">
-        <Icons.location className="text-success" width={16} />
+        <Icons.location className="text-primary" width={16} />
         {vacancy.city}
       </div>
     </Link>
