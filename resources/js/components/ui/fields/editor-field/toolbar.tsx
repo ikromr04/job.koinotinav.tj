@@ -152,7 +152,7 @@ function Toolbar({
             )}
           >
             <Tooltip label="Ссылка" position="top" />
-            link
+            <Icons.link width={14} />
           </button>
         </li>
       </ul>

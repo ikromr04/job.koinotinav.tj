@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { AppRoute } from '@/const/routes';
 import HomePage from './pages/home-page';
 import NotFoundPage from './pages/not-found-page';
@@ -13,22 +13,15 @@ import LoginPage from './pages/login-page';
 import { useAppSelector } from './hooks';
 import { getAuthStatus } from './store/auth-slice/auth-selector';
 import { AuthorizationStatus } from './const/store';
-import Spinner from './components/ui/spinner';
 import VacanciesShowPage from './pages/vacancies-show-page';
 import CompaniesPage from './pages/dashboard/companies/companies-page';
 import CompaniesEditPage from './pages/dashboard/companies/companies-edit-page';
 import CompaniesCreatePage from './pages/dashboard/companies/companies-create-page';
 
-function App(): JSX.Element {
+function App(): ReactNode {
   const authStatus = useAppSelector(getAuthStatus);
 
-  if (authStatus === AuthorizationStatus.Unknown) {
-    return (
-      <div className="flex w-screen h-screen justify-center items-center">
-        <Spinner className="w-16 h-16" />
-      </div>
-    );
-  }
+  if (authStatus === AuthorizationStatus.Unknown) return null;
 
   return (
     <BrowserRouter
