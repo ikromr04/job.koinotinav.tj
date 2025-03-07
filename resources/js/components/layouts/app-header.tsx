@@ -17,7 +17,7 @@ function AppHeader(): JSX.Element {
           <Icons.telegram width={20} height={14} /> @hrkoinotinav
         </Link>
 
-        <div className="flex items-center gap-x-2 ml-auto">
+        {/* <div className="flex items-center gap-x-2 ml-auto">
           <Icons.globe width={20} height={18} />
 
           <ul className="flex items-center gap-x-2">
@@ -28,7 +28,7 @@ function AppHeader(): JSX.Element {
               <div>En</div>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
       <nav className="relative bg-anime bg-cover text-white py-1 md:py-4 lg:py-7">
