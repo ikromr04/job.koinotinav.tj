@@ -20,7 +20,7 @@ class VacancyController extends Controller
     $filePath = '/images/image-field.png';
 
     if ($request->hasFile('image')) {
-      $file = $request()->file('image');
+      $file = $request->file('image');
       $fileName = uniqid() . '.' . $file->extension();
       $filePath = "/images/vacancies/$fileName";
       $file->move(public_path('/images/vacancies'), $fileName);
