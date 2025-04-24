@@ -17,6 +17,7 @@ import VacanciesShowPage from './pages/vacancies-show-page';
 import CompaniesPage from './pages/dashboard/companies/companies-page';
 import CompaniesEditPage from './pages/dashboard/companies/companies-edit-page';
 import CompaniesCreatePage from './pages/dashboard/companies/companies-create-page';
+import VacanciesTrashPage from './pages/dashboard/vacancies/vacancies-trash-page';
 
 function App(): ReactNode {
   const authStatus = useAppSelector(getAuthStatus);
@@ -45,6 +46,7 @@ function App(): ReactNode {
         <Route path={AppRoute.Dashboard.Vacancies.Index} element={<VacanciesPage />} />
         <Route path={AppRoute.Dashboard.Vacancies.Create} element={<VacanciesCreatePage />} />
         <Route path={AppRoute.Dashboard.Vacancies.Edit} element={<VacanciesEditPage />} />
+        <Route path={AppRoute.Dashboard.Vacancies.Trash} element={<VacanciesTrashPage />} />
 
         <Route path={AppRoute.Dashboard.Companies.Index} element={<CompaniesPage />} />
         <Route path={AppRoute.Dashboard.Companies.Create} element={<CompaniesCreatePage />} />

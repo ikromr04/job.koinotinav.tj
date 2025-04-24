@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::put('/banners/{id}', [BannerController::class, 'update']);
   Route::delete('/banners/{id}', [BannerController::class, 'delete']);
 
+  Route::get('/vacancies/trash', [VacancyController::class, 'trash']);
+  Route::put('/vacancies/trash/{id}', [VacancyController::class, 'restore']);
   Route::post('/vacancies', [VacancyController::class, 'store']);
   Route::put('/vacancies/{id}', [VacancyController::class, 'update']);
   Route::delete('/vacancies/{id}', [VacancyController::class, 'delete']);

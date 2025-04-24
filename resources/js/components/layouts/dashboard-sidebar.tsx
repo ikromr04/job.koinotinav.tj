@@ -45,6 +45,15 @@ function DashboardSidebar(): JSX.Element {
               Компании
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => classNames('group navlink', isActive && 'active')}
+              to={AppRoute.Dashboard.Vacancies.Trash}
+            >
+              <Icons.delete className="navlink__icon" />
+              Корзина
+            </NavLink>
+          </li>
         </ul>
 
         <button

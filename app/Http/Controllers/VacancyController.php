@@ -15,6 +15,20 @@ class VacancyController extends Controller
     return response()->json(Vacancy::latest()->get());
   }
 
+  public function trash(): JsonResponse
+  {
+    return response()->json(Vacancy::onlyTrashed()->latest()->get());
+  }
+
+  public function restore(Request $request): JsonResponse
+  {
+    $vacancy = Vacancy::withTrashed()->findOrFail($request->id)->update([
+      'deleted_at' => null,
+    ]);
+
+    return response()->json(Vacancy::find($request->id));
+  }
+
   public function store(Request $request): JsonResponse
   {
     $filePath = '/images/image-field.png';

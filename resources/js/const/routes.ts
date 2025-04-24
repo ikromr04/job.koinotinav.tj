@@ -17,6 +17,7 @@ export const AppRoute = {
       Index: '/dashboard/vacancies',
       Create: '/dashboard/vacancies/create',
       Edit: '/dashboard/vacancies/:id',
+      Trash: '/dashboard/vacancies-trash',
     },
     Companies: {
       Index: '/dashboard/companies',
@@ -39,6 +40,8 @@ export const APIRoute = {
   },
   Vacancies: {
     Index: '/vacancies',
+    Trash: '/vacancies/trash',
+    Restore: '/vacancies/trash/:id',
     Show: '/vacancies/:id',
     Resume: '/vacancies/resume',
   },

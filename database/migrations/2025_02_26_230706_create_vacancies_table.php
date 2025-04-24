@@ -20,6 +20,7 @@ return new class extends Migration
       $table->string('image')->default('/images/image-field.png');
       $table->string('direction');
       $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
+      $table->softDeletes();
       $table->timestamps();
     });
   }

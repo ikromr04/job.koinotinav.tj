@@ -17,6 +17,17 @@ export const fetchVacanciesAction = createAsyncThunk<Vacancies, undefined, {
   },
 );
 
+export const fetchTrashedVacanciesAction = createAsyncThunk<Vacancies, undefined, {
+  extra: AxiosInstance;
+}>(
+  'vacancies/fetchTrashedVacancies',
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<Vacancies>(APIRoute.Vacancies.Trash);
+
+    return data;
+  },
+);
+
 export const storeVacancyAction = createAsyncThunk<Vacancy, {
   formData: FormData,
   onSuccess?: () => void,
@@ -30,6 +41,32 @@ export const storeVacancyAction = createAsyncThunk<Vacancy, {
   async ({ formData, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
     try {
       const { data } = await api.post<Vacancy>(APIRoute.Vacancies.Index, formData);
+      if (onSuccess) onSuccess();
+      return data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      const error: AxiosError<ValidationError> = err;
+      if (!error.response) throw err;
+      if (onValidationError && (error.response?.status === 422)) onValidationError(error.response.data);
+      if (onFail && (error.response?.status !== 422)) onFail(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const restoreVacancyAction = createAsyncThunk<Vacancy, {
+  id: VacancyId,
+  onSuccess?: () => void,
+  onValidationError?: (error: ValidationError) => void,
+  onFail?: (message: string) => void,
+}, {
+  extra: AxiosInstance,
+  rejectWithValue: ValidationError,
+}>(
+  'vacancies/restore',
+  async ({ id, onValidationError, onSuccess, onFail }, { extra: api, rejectWithValue }) => {
+    try {
+      const { data } = await api.put<Vacancy>(generatePath(APIRoute.Vacancies.Restore, { id }));
       if (onSuccess) onSuccess();
       return data;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
