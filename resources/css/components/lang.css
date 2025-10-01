@@ -8,7 +8,7 @@
 }
 
 .lang__toggler {
-  @apply flex p-0 bg-transparent border-none text-[18px] font-bold text-grey;
+  @apply flex p-0 bg-transparent border-none text-[18px] font-bold text-grey cursor-pointer;
   @apply md:font-normal md:text-[16px] md:text-secondary;
 
   span:first-of-type {
@@ -28,6 +28,10 @@
 
   @media (min-width: 768px) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .lang.lang--shown & {
+    @apply md:opacity-100 md:visible;
   }
 }
 
