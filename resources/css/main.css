@@ -46,7 +46,7 @@
 }
 
 .page__body {
-  @apply flex flex-col m-0;
+  @apply flex flex-col m-0 min-h-screen;
 
   &.nav-shown {
     @apply overflow-hidden;
@@ -57,6 +57,7 @@
   @apply w-[90vw] mx-auto max-w-[1280px];
 }
 
-@import './components/layouts/header.css';
 @import './components/lang.css';
 @import './components/socials.css';
+@import './components/layouts/header.css';
+@import './components/layouts/footer.css';

@@ -19,6 +19,7 @@
 
 .header__lang {
   @apply order-4 w-full;
+  @apply md:w-auto;
 }
 
 .header__logo {
