@@ -58,5 +58,16 @@
     <symbol id="totop" viewBox="0 0 29 20" fill="none">
       <path d="M2 18L14.5 2L27 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
+
+    <symbol id="search" fill="none" viewBox="0 0 15 15">
+      <circle cx="6.933" cy="6.933" r="6.333" stroke="currentColor" />
+      <path stroke="currentColor" stroke-linecap="round" d="m11.6 11.6 2.333 2.333" />
+    </symbol>
+
+    <symbol id="company" fill="none" viewBox="0 0 16 16">
+      <path stroke="currentColor" d="M3.333 5.676c0-2.398 2.09-4.343 4.667-4.343s4.667 1.945 4.667 4.343c0 2.38-1.49 5.157-3.814 6.15a2.18 2.18 0 0 1-1.706 0c-2.324-.993-3.814-3.77-3.814-6.15Z" />
+      <path stroke="currentColor" d="M9.333 6a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Z" />
+      <path stroke="currentColor" stroke-linecap="round" d="M13.974 10.333c.443.402.693.855.693 1.334 0 1.656-2.985 3-6.667 3s-6.667-1.344-6.667-3c0-.48.25-.932.693-1.334" />
+    </symbol>
   </svg>
 </div>

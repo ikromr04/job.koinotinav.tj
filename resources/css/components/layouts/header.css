@@ -1,5 +1,5 @@
 .header {
-  @apply flex flex-col items-center overflow-auto;
+  @apply flex flex-col items-center overflow-auto min-h-[50px];
   @apply md:pt-10 md:overflow-visible;
 
   .nav-shown & {

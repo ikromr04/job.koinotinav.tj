@@ -1,21 +1,23 @@
 @extends('main')
 
 @section('content')
-  <main class="main container">
-    <div>
-      <h1>Вакансии Коиноти Нав</h1>
+  <main class="index">
+    <div class="index__vitrin">
+      <h1 class="sr-only">Вакансии Коиноти Нав</h1>
 
-      <p>
-        В нашем холдинге работают более 1000 человек
+      <p class="container">
+        В нашем <span>холдинге</span> работают более <span>1000 человек</span>
       </p>
 
-      <p>
+      <p class="container">
         Присоединяйтесь к “КОИНОТИ НАВ” - компании, где ценят отвественность, идеи и вклад каждого сотрудника!
       </p>
 
-      <p>
-        Всячески и всесторонне способствовать общественному благополучию через устойчивое развитие компаний <span>"КОИНОТИ НАВ"</span> и социальную ответственность, ориентируясь на умножение долгосрочных социальных и экономических благ.
-      </p>
+      <div class="index__search container">
+        <x-search class="w-full" />
+      </div>
+
+      <div class="container index__vitrin-jobs"></div>
     </div>
 
     <section>
