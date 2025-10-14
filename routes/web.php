@@ -9,6 +9,7 @@ Route::prefix(parseLocale())->group(function () {
   Route::get('/team', [PageController::class, 'team'])->name('pages.team');
   Route::get('/resume', [PageController::class, 'team'])->name('pages.resume');
 
+  Route::get('/vacancies', [VacancyController::class, 'index'])->name('pages.vacancies');
   Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name('pages.vacancy');
   Route::post('/vacancies/send-resume', [VacancyController::class, 'sendResume'])->name('vacancies.send-resume');
 });

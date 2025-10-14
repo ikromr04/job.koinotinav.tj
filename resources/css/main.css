@@ -57,10 +57,18 @@
   @apply w-[90vw] mx-auto max-w-[1280px];
 }
 
+.title {
+  @apply font-bold text-center text-[18px] mt-0 mb-5;
+  @apply md:text-[50px] md:text-left md:mb-14;
+}
+
 @import './components/lang.css';
 @import './components/socials.css';
 @import './components/layouts/header.css';
 @import './components/layouts/footer.css';
 @import './components/search.css';
+@import './components/vacancy-card.css';
+
+@import './components/blocks/hot-vacancies.css';
 
 @import './pages/index.css';
