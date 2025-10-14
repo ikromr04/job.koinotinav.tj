@@ -15,7 +15,7 @@ return new class extends Migration
       $table->id();
       $table->string('lang')->default('ru');
       $table->string('name');
-      $table->string('icon')->nullable();
+      $table->longText('icon')->nullable();
       $table->timestamps();
     });
   }

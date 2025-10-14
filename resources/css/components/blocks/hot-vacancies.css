@@ -1,9 +1,9 @@
 .hot-vacancies {
-  @apply flex flex-col mb-14;
+  @apply flex flex-col;
 }
 
 .hot-vacancies__list {
-  @apply flex flex-col p-0 gap-4 list-none;
+  @apply flex flex-col p-0 gap-4 list-none m-0;
   @apply md:grid md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))] md:auto-rows-fr;
 }
 

@@ -46,7 +46,8 @@
 }
 
 .page__body {
-  @apply flex flex-col m-0 min-h-screen bg-[#F3F4F6];
+  @apply flex flex-col m-0 min-h-screen bg-[#F3F4F6] bg-contain bg-center bg-no-repeat;
+  @apply md:bg-[url(/public/images/spiral.bg.png)];
 
   &.nav-shown {
     @apply overflow-hidden;
@@ -70,5 +71,6 @@
 @import './components/vacancy-card.css';
 
 @import './components/blocks/hot-vacancies.css';
+@import './components/blocks/categories.css';
 
 @import './pages/index.css';

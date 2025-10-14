@@ -20,10 +20,8 @@
       <div class="container index__vitrin-jobs"></div>
     </div>
 
-    <x-blocks.hot-vacancies class="container" :vacancies="$data->hotVacancies" />
+    <x-blocks.hot-vacancies class="index__vacancies container" :vacancies="$data->hotVacancies" />
 
-    <section>
-      <h2>@lang('Категории')</h2>
-    </section>
+    <x-blocks.categories class="index__categories" :categories="$data->categories" />
   </main>
 @endsection

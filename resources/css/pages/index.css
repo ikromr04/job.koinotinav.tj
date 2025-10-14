@@ -29,3 +29,8 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 10%);
   }
 }
+
+.index__vacancies,
+.index__categories {
+  @apply mb-14;
+}

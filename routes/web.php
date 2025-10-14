@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Route::prefix(parseLocale())->group(function () {
   Route::get('/vacancies', [VacancyController::class, 'index'])->name('pages.vacancies');
   Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name('pages.vacancy');
   Route::post('/vacancies/send-resume', [VacancyController::class, 'sendResume'])->name('vacancies.send-resume');
+
+  Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('pages.category');
 });
 
 
