@@ -46,7 +46,7 @@
 }
 
 .page__body {
-  @apply flex flex-col m-0 min-h-screen;
+  @apply flex flex-col m-0 min-h-screen bg-[#F3F4F6];
 
   &.nav-shown {
     @apply overflow-hidden;

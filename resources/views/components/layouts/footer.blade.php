@@ -1,11 +1,16 @@
+<div class="container relative z-10">
+  <button class="totop" type="button" onclick="window.scrollTo({ top: 0, behavior: 'smooth'})">
+    <span class="sr-only">@lang('Наверх')</span>
+    <svg width="29" height="30">
+      <use xlink:href="#totop" />
+    </svg>
+  </button>
+</div>
+
 <footer class="footer">
   <div class="footer__container container">
-    <div>
-      <a class="footer__logo" href="{{ route('pages.index') }}">
-        <img src="{{ asset('images/logo.svg') }}" width="215" height="26" alt="@lang('На главную')">
-      </a>
-
-      <a class="footer__logo-koinot" href="https://koinotinav.tj/">
+    <div class="footer__left">
+      <a class="footer__logo" href="https://koinotinav.tj/" target="_blank">
         <img src="{{ asset('images/logo-koinot.svg') }}" width="258" height="46" alt="@lang('На главную')">
       </a>
 
@@ -29,12 +34,24 @@
       <dl class="footer__address">
         <div class="footer__address-item">
           <dt>@lang('Адрес')</dt>
-          <dd>@lang('Душанбе, Таджикистан')</dd>
+          <dd>
+            <span>
+              <svg width="17" height="16">
+                <use xlink:href="#call" />
+              </svg>
+            </span>
+            @lang('Душанбе, Таджикистан')
+          </dd>
         </div>
         <div class="footer__address-item">
           <dt>@lang('Номер Телефона')</dt>
           <dd>
             <a href="tel:+992551515151">
+              <span>
+                <svg width="13" height="16">
+                  <use xlink:href="#location" />
+                </svg>
+              </span>
               +992 551515151
             </a>
           </dd>
@@ -43,6 +60,11 @@
           <dt>@lang('Электронная почта')</dt>
           <dd>
             <a href="mailto:info@koinotinav.tj">
+              <span>
+                <svg width="17" height="12">
+                  <use xlink:href="#mail" />
+                </svg>
+              </span>
               info@koinotinav.tj
             </a>
           </dd>
@@ -86,28 +108,22 @@
       <div class="footer__links-item">
         <dt>@lang('Поддержка')</dt>
         <dd>
-          <ul>
-            <li>
-              <a href="">
-                @lang('Контакты')
-              </a>
-            </li>
-            <li>
-              <a href="">
-                @lang('FAQ')
-              </a>
-            </li>
-          </ul>
+          <a href="">
+            @lang('Контакты')
+          </a>
+          <a href="">
+            @lang('FAQ')
+          </a>
         </dd>
       </div>
 
       <div class="footer__links-item">
         <dt>@lang('Регистрация')</dt>
         <dd>
-          <p>
+          <p class="footer__subscribe">
             @lang('Подпишитесь на нашу рассылку, чтобы быть в курсе последних обновлений и новостей')
           </p>
-          <form>
+          <form class="footer__form">
             <label>
               <span class="sr-only">@lang('Ваш E-mail')</span>
               <input type="email" placeholder="@lang('Ваш E-mail')">
@@ -122,9 +138,9 @@
     </dl>
   </div>
 
-  <hr>
+  <div class="footer__line"></div>
 
-  <div class="container">
+  <div class="footer__bottom container">
     <p>
       © {{ date('Y') }} Copyright <span>Koinoti Nav</span>
     </p>

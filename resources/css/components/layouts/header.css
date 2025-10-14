@@ -10,7 +10,7 @@
 
 .header__nav {
   @apply relative z-0 flex flex-col justify-between items-center flex-wrap py-4 h-full;
-  @apply md:flex-row md:flex-nowrap md:gap-8 md:rounded-[18px] md:px-7 md:py-6 md:h-auto;
+  @apply md:flex-row md:flex-nowrap md:gap-8 md:rounded-[18px] md:px-7 md:py-6 md:h-auto md:bg-white;
 
   @media (min-width: 768px) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
