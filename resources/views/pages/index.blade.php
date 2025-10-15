@@ -23,5 +23,7 @@
     <x-blocks.hot-vacancies class="index__vacancies container" :vacancies="$data->hotVacancies" />
 
     <x-blocks.categories class="index__categories" :categories="$data->categories" />
+
+    <x-blocks.stats class="index__stats" />
   </main>
 @endsection

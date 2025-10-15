@@ -72,5 +72,6 @@
 
 @import './components/blocks/hot-vacancies.css';
 @import './components/blocks/categories.css';
+@import './components/blocks/stats.css';
 
 @import './pages/index.css';
