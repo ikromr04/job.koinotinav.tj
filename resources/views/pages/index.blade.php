@@ -25,5 +25,7 @@
     <x-blocks.categories class="index__categories" :categories="$data->categories" />
 
     <x-blocks.stats class="index__stats" />
+
+    <x-blocks.advantages class="index__advantages" />
   </main>
 @endsection

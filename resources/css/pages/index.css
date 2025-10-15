@@ -32,6 +32,7 @@
 
 .index__vacancies,
 .index__categories,
-.index__stats {
+.index__stats,
+.index__advantages {
   @apply mb-14;
 }
