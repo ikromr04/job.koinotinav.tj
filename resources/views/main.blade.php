@@ -15,7 +15,7 @@
     @vite('resources/css/main.css')
   </head>
 
-  <body class="page__body">
+  <body class="page__body{{ request()->routeIs('pages.index') ? ' md:bg-[url(/public/images/spiral.bg.png)]' : '' }}">
     <x-icons />
 
     <x-layouts.header />

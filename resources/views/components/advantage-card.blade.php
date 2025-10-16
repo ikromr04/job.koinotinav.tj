@@ -4,7 +4,7 @@
 ])
 
 <article class="{{ $class ? "$class " : '' }}advantage-card">
-  <img class="advantage-card__image" src="{{ asset($advantage->image) }}" alt="">
+  <img class="advantage-card__image" src="{{ asset($advantage->image) }}" width="326" height="217" alt="{{ $advantage->title }}">
 
   <div class="advantage-card__inner">
     <h3 class="advantage-card__title">{{ $advantage->title }}</h3>

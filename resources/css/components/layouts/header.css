@@ -3,7 +3,7 @@
   @apply md:pt-10 md:overflow-visible;
 
   .nav-shown & {
-    @apply fixed left-0 top-0 w-screen h-screen bg-white;
+    @apply fixed left-0 top-0 z-20 w-screen h-screen bg-white;
     @apply md:static md:w-auto md:h-auto md:bg-transparent;
   }
 }

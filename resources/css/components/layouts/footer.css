@@ -5,7 +5,7 @@
 }
 
 .footer {
-  @apply relative z-0 overflow-hidden py-10 mt-auto bg-[#F2F6FD];
+  @apply relative z-0 overflow-hidden py-10 bg-[#F2F6FD];
   @apply md:pt-32 md:pb-0 md:text-[#66789C];
 
   @media (min-width: 768px) {

@@ -1,4 +1,4 @@
-<div class="container relative z-10">
+<div class="container relative z-10 mt-auto">
   <button class="totop" type="button" onclick="window.scrollTo({ top: 0, behavior: 'smooth'})">
     <span class="sr-only">@lang('Наверх')</span>
     <svg width="29" height="30">
