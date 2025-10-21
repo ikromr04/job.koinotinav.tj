@@ -1,6 +1,6 @@
 const formEl = document.querySelector('.vacancies__filter form');
 
-formEl.addEventListener('change', (evt) => {
+formEl?.addEventListener('change', (evt) => {
   const url = new URL(window.location.href);
   url.hash = 'vacancies';
 

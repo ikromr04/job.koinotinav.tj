@@ -77,6 +77,8 @@ img {
 @import './components/pagination.css';
 @import './components/breadcrumbs.css';
 
+@import './components/forms/resume-form.css';
+
 @import './components/blocks/hot-vacancies.css';
 @import './components/blocks/categories.css';
 @import './components/blocks/stats.css';
@@ -86,3 +88,4 @@ img {
 @import './pages/team.css';
 @import './pages/vacancies/index.css';
 @import './pages/categories/show.css';
+@import './pages/resume.css';
