@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Vacancy;
+use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -76,6 +77,24 @@ class PageController extends Controller
     ];
 
     return view('pages.vacancies.index', compact('data'));
+  }
+
+  public function vacancy(Vacancy $vacancy): ViewView
+  {
+    $data = (object)[
+      'vacancy' => $vacancy,
+      'similarVacancies' => Vacancy::select([
+        'id',
+        'lang',
+        'company_id',
+        'category_id',
+        'city',
+        'title',
+        DB::raw('SUBSTRING(content, 1, 88) as description')
+      ])->where('category_id', $vacancy->category->id)->get(),
+    ];
+
+    return view('pages.vacancies.show', compact('data'));
   }
 
   public function category(Category $category): View

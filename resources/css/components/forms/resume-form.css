@@ -41,7 +41,7 @@
   &.resume-form__item--file {
     @apply flex-col gap-4;
 
-    label span {
+    label>span {
       @apply flex justify-center items-center text-[16px] gap-2 w-full h-12 px-8 rounded-lg border border-dashed border-primary bg-[#E5EBFF] text-sm leading-none text-primary pointer-events-none;
     }
 
