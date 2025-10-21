@@ -18,8 +18,6 @@ return new class extends Migration
       $table->text('content');
       $table->boolean('hot')->default(false);
       $table->string('city');
-      $table->string('image')->default('/images/image-field.png');
-      $table->string('direction');
 
       $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
       $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();

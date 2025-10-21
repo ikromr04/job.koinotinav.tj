@@ -3,7 +3,7 @@
     'categories',
 ])
 
-<section class="{{ $class ? "$class " : '' }}categories">
+<section class="{{ $class ? "$class " : '' }}categories" id="categories">
   <h2 class="categories__title title container">@lang('Категории')</h2>
 
   <ul class="categories__list">

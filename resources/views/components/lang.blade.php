@@ -14,7 +14,7 @@
   <ul class="lang__list">
     @foreach (config('app.available_locales') as $locale)
       <li class="lang__item">
-        <a class="lang__link{{ $locale === app()->getLocale() ? ' lang__link--current' : '' }}" href="/{{ $locale !== config('app.fallback_locale') ? $locale : '' }}">
+        <a class="lang__link{{ $locale === app()->getLocale() ? ' lang__link--current' : '' }}" href="{{ $locale !== config('app.fallback_locale') ? "/$locale" : '' }}/{{ preg_replace('#^(en)/#', '', request()->path()) }}">
           {{ $locale }}
           @if ($locale === app()->getLocale())
             <svg width="11" heigh="8">

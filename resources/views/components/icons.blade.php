@@ -81,5 +81,13 @@
     <symbol id="calendar" fill="none" viewBox="0 0 12 14">
       <path fill="currentColor" d="M3.9.945Q3.853.401 3.308.351q-.544.05-.594.594v.99h-.99a1.6 1.6 0 0 0-1.113.47 1.6 1.6 0 0 0-.47 1.113v7.916q.026.669.47 1.114.445.444 1.114.47H9.64a1.6 1.6 0 0 0 1.113-.47 1.6 1.6 0 0 0 .47-1.114V3.518a1.6 1.6 0 0 0-.47-1.113 1.6 1.6 0 0 0-1.113-.47h-.99v-.99Q8.601.401 8.057.351q-.544.05-.594.594v.99H3.901zM1.329 5.101h1.979v1.386h-1.98zm0 2.573h1.979v1.583h-1.98zm3.166 0H6.87v1.583H4.494zm3.563 0h1.979v1.583h-1.98zm1.979-1.187h-1.98V5.1h1.98zm0 3.958v.99q-.025.37-.396.395H8.057v-1.385zm-3.167 0v1.385H4.494v-1.385zm-3.562 0v1.385H1.724q-.372-.024-.396-.396v-.99zm3.562-3.958H4.494V5.1H6.87z" />
     </symbol>
+
+    <symbol id="pagination-icon" width="9" height="15" fill="none" viewBox="0 0 9 15">
+      <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="2" d="m1.697 1.418 6 6-6 6" />
+    </symbol>
+
+    <symbol id="arrow" fill="none" viewBox="0 0 6 10">
+      <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.214" d="M1.15.893 4.79 4.535 1.15 8.176" />
+    </symbol>
   </svg>
 </div>
