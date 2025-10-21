@@ -31,9 +31,5 @@
         </li>
       @endforeach
     </ul>
-    {{--
-    @if (count($data->vacancies) > 3)
-      <x-blocks.similar-vacancies :vacancies="$data->vacancies->skip(3)" />
-    @endif --}}
   </main>
 @endsection
