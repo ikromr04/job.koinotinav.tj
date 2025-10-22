@@ -15,8 +15,16 @@
     "file": "assets/DINPro-VToQ1G2z.woff",
     "src": "public/fonts/DINPro.woff"
   },
+  "public/images/index-vitrin.bg.svg": {
+    "file": "assets/index-vitrin.bg-Rum14c9k.svg",
+    "src": "public/images/index-vitrin.bg.svg"
+  },
+  "public/images/spiral.bg.png": {
+    "file": "assets/spiral.bg-D1dYC95P.png",
+    "src": "public/images/spiral.bg.png"
+  },
   "resources/css/main.css": {
-    "file": "assets/main-aJ5Gr_ar.css",
+    "file": "assets/main-yk0cTz9z.css",
     "src": "resources/css/main.css",
     "isEntry": true,
     "names": [
@@ -24,7 +32,7 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-Dw8YXy6Z.js",
+    "file": "assets/main-CwOXC9rz.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true
