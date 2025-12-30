@@ -13,9 +13,7 @@ Route::prefix(parseLocale())->group(function () {
   Route::get('/categories/{category}', [PageController::class, 'category'])->name('pages.category');
 
   Route::post('/vacancies/send-resume', [VacancyController::class, 'sendResume'])->name('vacancies.send-resume');
-
 });
-
 
 function parseLocale()
 {

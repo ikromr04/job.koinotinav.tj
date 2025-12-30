@@ -82,25 +82,49 @@
 
     <dl class="footer__links">
       <div class="footer__links-item">
-        <dt>@lang('Наши Компании')</dt>
+        <dt>@lang('Меню')</dt>
         <dd>
-          <a href="https://evolet.tj/" target="_blank">
-            @lang('Эволет')
+          <a href="/">
+            @lang('Главная')
           </a>
-          <a href="https://ats.tj/" target="_blank">
-            @lang('АтС')
+          <a href="#">
+            @lang('Категории')
           </a>
-          <a href="https://atsgen.tj/" target="_blank">
-            @lang('АтС Джен')
+          <a href="#" target="_blank">
+            @lang('Карьерный рост')
           </a>
-          <a href="https://vegapharm.tj/" target="_blank">
-            @lang('Вегафарм')
+          <a href="{{ route('pages.resume') }}">
+            @lang('Резюме')
           </a>
-          <a href="http://tajmotors.tj/" target="_blank">
-            @lang('Tajmotors')
+        </dd>
+      </div>
+
+      <div class="footer__links-item">
+        <dt>@lang('О нас')</dt>
+        <dd>
+          <a href="">
+            @lang('История')
           </a>
-          <a href="https://www.byd.tj/" target="_blank">
-            @lang('BYD')
+          <a class="min-w-max" href="">
+            @lang('Миссия, Видение, Ценности')
+          </a>
+          <a href="">
+            @lang('Новости')
+          </a>
+        </dd>
+      </div>
+
+      <div class="footer__links-item">
+        <dt>@lang('Полезные ссылки')</dt>
+        <dd>
+          <a href="">
+            @lang('Компании')
+          </a>
+          <a href="">
+            @lang('Вклад в общество')
+          </a>
+          <a href="">
+            @lang('Карьера')
           </a>
         </dd>
       </div>
@@ -117,7 +141,7 @@
         </dd>
       </div>
 
-      <div class="footer__links-item">
+      {{-- <div class="footer__links-item">
         <dt>@lang('Регистрация')</dt>
         <dd>
           <p class="footer__subscribe">
@@ -143,7 +167,7 @@
             </button>
           </form>
         </dd>
-      </div>
+      </div> --}}
     </dl>
   </div>
 

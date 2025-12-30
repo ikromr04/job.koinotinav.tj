@@ -4,7 +4,7 @@
 ])
 
 <section class="{{ $class ? "$class " : '' }}hot-vacancies">
-  <h2 class="hot-vacancies__title title">@lang('Горячие вакансии в холдинге 🔥')</h2>
+  <h2 class="hot-vacancies__title title">@lang('Наши горячие вакансии! Успейте разобрать)')</h2>
 
   <ul class="hot-vacancies__list">
     @foreach ($vacancies as $vacancy)

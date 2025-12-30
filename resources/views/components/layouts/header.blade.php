@@ -23,13 +23,28 @@
         </a>
       </li>
       <li class="header__item">
-        <a class="header__navlink{{ request()->routeIs('pages.team') ? ' header__navlink--current' : '' }}" href="{{ route('pages.team') }}">
-          @lang('Наш тим')
+        <a class="header__navlink{{ request()->routeIs('pages.vacancies') ? ' header__navlink--current' : '' }}" href="{{ route('pages.vacancies') }}">
+          @lang('Все вакансии')
+        </a>
+      </li>
+      <li class="header__item">
+        <a class="header__navlink" href="#">
+          @lang('Категории')
+        </a>
+      </li>
+      <li class="header__item">
+        <a class="header__navlink" href="#">
+          @lang('Карьерный рост')
+        </a>
+      </li>
+      <li class="header__item">
+        <a class="header__navlink" href="#">
+          @lang('Контакты')
         </a>
       </li>
     </ul>
 
-    <a class="header__resume" href="{{ route('pages.resume') }}">@lang('Резюме')</a>
+    <a class="header__resume" href="{{ route('pages.resume') }}">@lang('Шаблон')</a>
 
     <div class="header__bottom">
       <div class="header__links">

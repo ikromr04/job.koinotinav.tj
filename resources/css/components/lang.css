@@ -1,6 +1,6 @@
 .lang {
   @apply hidden relative z-10 justify-between items-center pb-6 border-b border-secondary/20;
-  @apply md:flex md:border-none md:p-0 md:w-auto;
+  @apply xl:flex xl:border-none xl:p-0 xl:w-auto;
 
   .nav-shown & {
     @apply flex;

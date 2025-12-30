@@ -8,8 +8,6 @@
       {{ $data->category->name }}
     </h1>
 
-    <x-search class="category__search" />
-
     <ul class="category__list">
       @foreach ($data->vacancies as $vacancy)
         <li class="category__item">

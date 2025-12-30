@@ -3,7 +3,7 @@
 @section('content')
   <main class="index">
     <div class="index__vitrin">
-      <h1 class="sr-only">Вакансии Коиноти Нав</h1>
+      {{-- <h1 class="sr-only">Вакансии Коиноти Нав</h1>
 
       <p class="container">
         В нашем <span>холдинге</span> работают более <span>1000 человек</span>
@@ -17,10 +17,10 @@
         <x-search class="w-full" />
       </div>
 
-      <div class="container index__vitrin-jobs"></div>
+      <div class="container index__vitrin-jobs"></div> --}}
+      <x-blocks.hot-vacancies class="index__vacancies md:py-10 container" :vacancies="$data->hotVacancies" />
     </div>
 
-    <x-blocks.hot-vacancies class="index__vacancies container" :vacancies="$data->hotVacancies" />
 
     <x-blocks.categories class="index__categories" :categories="$data->categories" />
 

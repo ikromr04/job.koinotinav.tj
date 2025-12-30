@@ -10,7 +10,7 @@
 
 .header__nav {
   @apply relative z-0 flex flex-col justify-between items-center flex-wrap py-4 h-full;
-  @apply md:flex-row md:flex-nowrap md:gap-8 md:rounded-[18px] md:px-7 md:py-6 md:h-auto md:bg-white;
+  @apply md:flex-row md:gap-8 md:rounded-[18px] md:px-7 md:py-6 md:h-auto md:bg-white;
 
   @media (min-width: 768px) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -19,7 +19,7 @@
 
 .header__lang {
   @apply order-4 w-full;
-  @apply md:w-auto;
+  @apply xl:w-auto;
 }
 
 .header__logo {
@@ -34,8 +34,7 @@
 
 .header__list {
   @apply order-3 hidden flex-col gap-2 list-none p-0 my-12 w-full font-medium text-[20px] text-grey;
-  @apply md:flex-row md:w-auto md:mx-auto md:my-0 md:flex md:gap-6;
-  @apply xl:gap-14;
+  @apply xl:flex-row xl:w-auto xl:mx-auto xl:my-0 xl:flex xl:gap-8;
 
   .nav-shown & {
     @apply flex;
@@ -64,7 +63,7 @@
 
 .header__resume {
   @apply order-5 hidden justify-center py-[15px] w-full no-underline rounded-xl border border-primary my-6 text-primary;
-  @apply md:flex md:order-3 md:m-0 md:rounded-full md:w-auto md:px-7 md:py-3;
+  @apply xl:flex xl:order-3 xl:m-0 xl:rounded-full xl:w-auto xl:px-7 xl:py-3;
 
   .nav-shown & {
     @apply flex;
@@ -91,7 +90,8 @@
 
 .header__toggler {
   @apply order-2 absolute top-3 right-0 flex justify-center items-center w-6 h-6 p-0 border-none bg-transparent text-black;
-  @apply md:hidden;
+  @apply md:relative md:top-0;
+  @apply xl:hidden;
 
   svg:first-of-type {
     @apply flex;
