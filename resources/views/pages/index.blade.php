@@ -3,29 +3,19 @@
 @section('content')
   <main class="index">
     <div class="index__vitrin">
-      {{-- <h1 class="sr-only">Вакансии Коиноти Нав</h1>
-
-      <p class="container">
-        В нашем <span>холдинге</span> работают более <span>1000 человек</span>
-      </p>
-
-      <p class="container">
-        Присоединяйтесь к “КОИНОТИ НАВ” - компании, где ценят отвественность, идеи и вклад каждого сотрудника!
-      </p>
-
-      <div class="index__search container">
-        <x-search class="w-full" />
+      <div class="title container !text-center !mt-10 md:!mt-16 xl:!mt-20">
+        @lang('МЫ ЦЕНИМ КАЖДОГО!</br>МЫ ВЕРИМ В КАЖДОГО! ')
       </div>
 
-      <div class="container index__vitrin-jobs"></div> --}}
       <x-blocks.hot-vacancies class="index__vacancies md:py-10 container" :vacancies="$data->hotVacancies" />
     </div>
-
 
     <x-blocks.categories class="index__categories" :categories="$data->categories" />
 
     <x-blocks.stats class="index__stats" />
 
     <x-blocks.advantages class="index__advantages" />
+
+    <x-forms.bot-form class="index__advantages" />
   </main>
 @endsection

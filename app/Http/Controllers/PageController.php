@@ -26,7 +26,7 @@ class PageController extends Controller
       ])
         ->where('hot', true)
         ->latest()
-        ->take(5)
+        ->take(8)
         ->get(),
       'categories' => Category::where('lang', app()->getLocale())
         ->get(),

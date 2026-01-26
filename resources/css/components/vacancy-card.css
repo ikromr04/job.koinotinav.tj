@@ -15,21 +15,9 @@
 }
 
 .vacancy-card__address {
-  @apply flex flex-col gap-3 not-italic text-[14px] text-[#73787D];
-
-  p {
-    &:first-of-type {
-      @apply text-[13px] font-medium;
-    }
-
-    @apply flex items-center m-0 gap-3;
-
-    svg {
-      @apply text-primary;
-    }
-  }
+  @apply grid grid-cols-2 items-center mt-auto gap-4;
 }
 
 .vacancy-card__more {
-  @apply absolute right-6 bottom-6 flex justify-center items-center bg-primary text-white no-underline rounded-[8px] font-medium py-3 px-4 leading-none;
+  @apply flex justify-center items-center bg-primary text-white no-underline rounded-[8px] font-medium py-3 px-4 leading-none;
 }
