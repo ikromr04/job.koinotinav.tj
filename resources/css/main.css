@@ -66,6 +66,10 @@ img {
   @apply md:text-[50px] md:text-left md:mb-14;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @import './components/lang.css';
 @import './components/socials.css';
 @import './components/layouts/header.css';

@@ -28,17 +28,17 @@
         </a>
       </li>
       <li class="header__item">
-        <a class="header__navlink" href="#">
+        <a class="header__navlink" href="{{ route('pages.index') }}#categories">
           @lang('Категории')
         </a>
       </li>
       <li class="header__item">
-        <a class="header__navlink" href="#">
+        <a class="header__navlink" href="{{ route('pages.index') }}#career">
           @lang('Карьерный рост')
         </a>
       </li>
       <li class="header__item">
-        <a class="header__navlink" href="#">
+        <a class="header__navlink" href="#contacts">
           @lang('Контакты')
         </a>
       </li>

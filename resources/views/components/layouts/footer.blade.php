@@ -74,10 +74,10 @@
           <a href="/">
             @lang('Главная')
           </a>
-          <a href="#">
+          <a href="{{ route('pages.index') }}#categories">
             @lang('Категории')
           </a>
-          <a href="#" target="_blank">
+          <a href="{{ route('pages.index') }}#career">
             @lang('Карьерный рост')
           </a>
           <a href="{{ route('pages.resume') }}">
@@ -89,13 +89,13 @@
       <div class="footer__links-item">
         <dt>@lang('О нас')</dt>
         <dd>
-          <a href="">
+          <a href="https://koinotinav.tj/about/history">
             @lang('История')
           </a>
-          <a class="min-w-max" href="">
+          <a class="min-w-max" href="https://koinotinav.tj/about/mission">
             @lang('Миссия, Видение, Ценности')
           </a>
-          <a href="">
+          <a href="https://koinotinav.tj/news">
             @lang('Новости')
           </a>
         </dd>
@@ -104,14 +104,11 @@
       <div class="footer__links-item">
         <dt>@lang('Полезные ссылки')</dt>
         <dd>
-          <a href="">
+          <a href="https://koinotinav.tj/projects">
             @lang('Компании')
           </a>
-          <a href="">
+          <a href="https://koinotinav.tj/contribution">
             @lang('Вклад в общество')
-          </a>
-          <a href="">
-            @lang('Карьера')
           </a>
         </dd>
       </div>
@@ -129,7 +126,7 @@
 
   <div class="footer__line"></div>
 
-  <div class="footer__bottom container">
+  <div class="footer__bottom container" id="contacts">
     <p>
       © {{ date('Y') }} Copyright <span>Koinoti Nav</span>
     </p>

@@ -38,26 +38,6 @@
     </label>
   </p>
 
-  <p class="resume-form__item resume-form__item--file">
-    <label class="resume-form__label">
-      <span>
-        <svg width="20" height="20">
-          <use xlink:href="#add" />
-        </svg>
-        <span data-label="@lang('Загрузить резюме') (docx, doc, PDF)">
-          @lang('Загрузить резюме') (docx, doc, PDF)
-        </span>
-      </span>
-      <input class="sr-only" name="resume" type="file" accept=".doc,.docx,.pdf">
-    </label>
-
-    <span>@lang('или')</span>
-
-    <a href="https://www.cvwizard.com/app/resumes" target="_blank">
-      @lang('Создать резюме')
-    </a>
-  </p>
-
   <button class="resume-form__submit group" type="submit" data-label="@lang('Откликнуться')">
     <span class="group-[.submitting]:hidden group-[.success]:hidden">@lang('Откликнуться')</span>
     <svg aria-hidden="true" class="hidden group-[.submitting]:inline w-6 h-6 text-white animate-spin dark:text-gray-400 fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

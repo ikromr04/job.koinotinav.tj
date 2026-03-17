@@ -17,7 +17,7 @@
   ];
 @endphp
 
-<section class="{{ $class ? "$class " : '' }}advantages container">
+<section class="{{ $class ? "$class " : '' }}advantages container" id="career">
   <h2 class="title">@lang('Что делает нас особенными')</h2>
 
   <ul class="advantages__list">
