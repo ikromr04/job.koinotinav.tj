@@ -4,7 +4,7 @@
 }
 
 .advantage-card__image {
-  @apply flex w-full aspect-[324/216] rounded-[12px];
+  @apply flex w-full aspect-[324/216] rounded-[12px] object-cover;
   @apply md:mb-5;
 }
 

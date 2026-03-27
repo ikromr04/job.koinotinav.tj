@@ -12,6 +12,7 @@
     <link href="{{ asset('favicons/icon.svg') }}" rel="icon" type="image/svg+xml">
     <link href="{{ asset('favicons/180x180.png') }}" rel="apple-touch-icon">
     <link href="{{ asset('manifest.webmanifest') }}" rel="manifest">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     @vite('resources/css/main.css')
   </head>
 
@@ -24,6 +25,7 @@
 
     <x-layouts.footer />
 
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     @vite('resources/js/main.js')
   </body>
 

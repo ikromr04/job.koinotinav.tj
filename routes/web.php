@@ -11,6 +11,8 @@ Route::prefix(parseLocale())->group(function () {
   Route::get('/vacancies', [PageController::class, 'vacancies'])->name('pages.vacancies');
   Route::get('/vacancies/{vacancy}', [PageController::class, 'vacancy'])->name('pages.vacancy');
   Route::get('/categories/{category}', [PageController::class, 'category'])->name('pages.category');
+  Route::get('/teambuilding', [PageController::class, 'teambuilding'])->name('pages.teambuilding');
+  Route::get('/faq', [PageController::class, 'faq'])->name('pages.faq');
 
   Route::post('/vacancies/send-resume', [VacancyController::class, 'sendResume'])->name('vacancies.send-resume');
 });

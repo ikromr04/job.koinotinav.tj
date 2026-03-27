@@ -20,7 +20,7 @@
       There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
     </p>
 
-    <a class="advantage-card__link">
+    <a class="advantage-card__link no-underline" @if($advantage?->route) href="{{ route($advantage->route) }}" @endif>
       @lang('Читать')
     </a>
   </div>

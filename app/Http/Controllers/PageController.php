@@ -117,4 +117,14 @@ class PageController extends Controller
 
     return view('pages.categories.show', compact('data'));
   }
+
+  public function teambuilding(): View
+  {
+    return view('pages.teambuilding');
+  }
+
+  public function faq(): View
+  {
+    return view('pages.faq');
+  }
 }

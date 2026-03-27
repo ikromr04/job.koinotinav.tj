@@ -5,14 +5,17 @@
       (object) [
           'image' => '/images/advantages/adv-1.jpg',
           'title' => 'Корпоративная культура',
+          'route' => null
       ],
       (object) [
           'image' => '/images/advantages/adv-2.jpg',
           'title' => 'Карьерный рост',
+          'route' => null
       ],
       (object) [
-          'image' => '/images/advantages/adv-1.jpg',
+          'image' => '/images/advantages/adv-3.jpg',
           'title' => 'Тимбилдинги',
+          'route' => 'pages.teambuilding'
       ],
   ];
 @endphp

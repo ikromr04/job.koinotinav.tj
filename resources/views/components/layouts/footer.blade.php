@@ -11,7 +11,7 @@
   <div class="footer__container container">
     <div class="footer__left">
       <a class="footer__logo" href="https://koinotinav.tj/" target="_blank">
-        <img src="{{ asset('images/logo-koinot.svg') }}" width="258" height="46" alt="@lang('На главную')">
+        <img src="{{ asset('images/logo.svg') }}" width="258" height="46" alt="@lang('На главную')">
       </a>
 
       <p class="footer__description">
@@ -116,7 +116,7 @@
       <div class="footer__links-item">
         <dt>@lang('Поддержка')</dt>
         <dd>
-          <a href="">
+          <a href="{{ route('pages.faq') }}">
             @lang('FAQ')
           </a>
         </dd>
